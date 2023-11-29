@@ -15,7 +15,6 @@ const Header = () => {
             <div className="search-bar">
                 <input
                     type="text"
-                    value={searchTerm}
                     placeholder="Type here to search..."
                 />
                 <div className="search-icon">
