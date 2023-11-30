@@ -1,0 +1,49 @@
+@import "../../variables.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    font-family: 'Lexend';
+}
+
+.header-container {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-color: var(--light-brown);
+    align-items: center;
+    flex-flow: row;
+    /* justify-content:space-around; */
+}
+.home {
+    /* background-color: var(--background-color); */
+    width: 350px;
+    display: flex;
+    margin-left: 12px;
+    align-items: center;
+    padding: 8px 12px;
+}
+.logo {
+    background-color: var(--background);
+    border-radius: 5px;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+
+.logo-image {
+    height: 100%;
+    width: auto;
+}
+
+.web-name {
+    margin-left: 20px;
+    font-family: 'Lexend Deca';
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--dark-brown);
+}
