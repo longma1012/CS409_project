@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SignUpPage.css";
+import { Link } from "react-router-dom";
 
 function SignUpPage() {
   // const [netId, setNetId] = useState("");
@@ -27,7 +28,8 @@ function SignUpPage() {
               placeholder="Confirm your password"
             />
             <div className="loginIfHaveAccount">
-              Already have an account? Sign in
+              Already have an account?
+              <Link to="/">Login</Link>
             </div>
 
             <div className="enterButton">
