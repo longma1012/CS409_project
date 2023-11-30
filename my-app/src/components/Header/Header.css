@@ -4,27 +4,28 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background);
-    font-family: 'Lexend';
+    font-family: "Lexend";
 }
 
 .header-container {
     display: flex;
-    height: 80px;
+    height: 75px;
     width: 100%;
     background-color: var(--light-brown);
     align-items: center;
     flex-flow: row;
-    /* justify-content:space-around; */
+    justify-content: space-between;
 }
+
 .home {
     /* background-color: var(--background-color); */
-    width: 350px;
+    width: 270px;
     display: flex;
-    margin-left: 12px;
+    margin-left: 25px;
     align-items: center;
     padding: 8px 12px;
 }
-.logo {
+.logo-container {
     background-color: var(--background);
     border-radius: 5px;
     width: 42px;
@@ -34,16 +35,69 @@ body {
     justify-content: center;
     padding: 2px;
 }
-
 .logo-image {
     height: 100%;
     width: auto;
 }
-
 .web-name {
     margin-left: 20px;
-    font-family: 'Lexend Deca';
+    font-family: "Lexend Deca";
     font-size: 28px;
     font-weight: 900;
     color: var(--dark-brown);
+}
+
+.search-bar {
+    position: relative;
+    display: inline-block;
+}
+.search-bar input {
+    padding-right: 30px;
+    width: 600px;
+    height: 40px;
+    box-sizing: border-box;
+    background-color: var(--background);
+    border: 0;
+    border-radius: 10px;
+    color: var(--light-brown);
+    padding-left: 15px;
+}
+.search-bar input::placeholder {
+    color: var(--light-brown);
+}
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.User {
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
+.photo-container {
+    background-color: var(--background);
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+}
+.photo {
+    height: 100%;
+    width: auto;
+}
+.username {
+    margin-left: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--background);
 }
