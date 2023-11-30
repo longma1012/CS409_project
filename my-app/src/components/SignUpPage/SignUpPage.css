@@ -1,0 +1,108 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #F4F3E4;
+  }
+  
+  .innerContainer {
+    width: 1008.17px; 
+    height: 617px;
+    left: 216px;
+    top: 185px;
+    position: absolute;
+    background: #E8E4BA;
+    border-radius: 176px;
+    /* display: flex;
+    flex-direction: row; */
+  }
+
+  .submitInformation{
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .signUpTitle{
+    color: var(--Dark-Brown, #7B5720);
+    text-align: center;
+    font-family: 'Limelight', cursive;
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+  .signup_section{
+    width: 525px;
+    height: 67px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 102px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #979696;
+    font-size: 25px;
+    font-family: Lexend;
+    font-weight: 400;
+    word-wrap: break-word
+  }
+
+.photoUpload {
+    width: 229px;
+    height: 229px;
+    flex-shrink: 0;
+    background: #FFF;
+    margin-left: 52px;
+  }
+  
+  
+  /* .accountContainer {
+    width: 322.45px;
+    height: 25px;
+    left: 802px;
+    top: 601px;
+    position: absolute;
+  }
+  
+  .loginText, .accountText, .inputText {
+    position: absolute;
+    text-align: center;
+    color: #7B5720;
+    font-size: 20px;
+    font-family: Lexend;
+    font-weight: 500;
+    word-wrap: break-word;
+  }
+  
+  .whiteBox {
+    width: 229px;
+    height: 229px;
+    left: 895px;
+    top: 372px;
+    position: absolute;
+    background: white;
+  }
+  
+  .formContainer {
+    width: 525px;
+    height: 229px;
+    left: 318px;
+    top: 372px;
+    position: absolute;
+  }
+  
+  .inputBox {
+    width: 525px;
+    height: 67px;
+    position: absolute;
+    background: white;
+  }
+  
+  
+   */
