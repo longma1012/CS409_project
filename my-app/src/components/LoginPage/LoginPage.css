@@ -22,28 +22,17 @@
 .loginInnerContainer {
     width: 1000px;
     height: 558px;
-    left: 216px;
+    left: 256px;
     top: 185px;
-    /* left: 50%;  
-    top: 50%;   */
-    /* transform: translate(-50%, -50%);   */
-
     position: absolute;
     background: #E8E4BA;
     border-radius: 176px;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
 
   }
 
 .loginFormContainer {
     display: flex;
     flex-direction: column;
-    /* align-items: center; 
-    justify-content: center;  */
 }
 
 .login_section {
@@ -61,12 +50,43 @@
     word-wrap: break-word
 }
 
+.signupIfNoAccount {
+    margin-left: 250px;
+    color: var(--Inner-Text-Grey, #979696);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+
+
+.signUplink:visited{  
+    color: var(--Dark-Brown, #7B5720);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+     }  
+.signUplink:hover{  
+    color: #7f1f1f;
+     }  
+
+
 
 .enterButton  button{
    
     width: 241px;
     height: 60px;
+    margin-top: 48px;
     margin-left: 381px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
     background-color: var(--dark-brown);
     color: white;
     text-align: center;
@@ -76,3 +96,21 @@
     font-weight: 500;
     line-height: normal;
     }
+
+    .enterButton  button:active{
+   
+        width: 241px;
+        height: 60px;
+        margin-top: 48px;
+        margin-left: 381px;
+        border-radius: 25px;
+        /* border: 1px solid #7f1f1f; */
+        background-color: #2f200a;
+        color: white;
+        text-align: center;
+        font-family: Lexend;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        }
