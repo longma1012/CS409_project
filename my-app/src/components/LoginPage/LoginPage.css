@@ -1,116 +1,101 @@
 @import "../../variables.css";
 
-
 .loginContainer {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: #F4F3E4;
-  }
+  /* width: 100%;
+  height: 100%;
+  position: relative;
+  background: #f4f3e4; */
+  width: 100%;
+  height: 100vh; /* Use vh for full viewport height if the container is the outermost element */
+  display: flex; /* Set display to flex to use flexbox properties */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: relative;
+  background: #f4f3e4;
+}
 
-.loginTitle{
-    color: var(--Dark-Brown, #7B5720);
-    text-align: center;
-    font-family: 'Limelight', cursive;
-    font-size: 120px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
-  }
+.loginTitle {
+  color: var(--Dark-Brown, #7b5720);
+  text-align: center;
+  font-family: "Limelight", cursive;
+  font-size: 120px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 .loginInnerContainer {
-    width: 1000px;
-    height: 558px;
-    left: 256px;
-    top: 185px;
-    position: absolute;
-    background: #E8E4BA;
-    border-radius: 176px;
-
-  }
+  width: 1000px;
+  height: 558px;
+  /* left: 256px;
+  top: 185px; */
+  margin: auto;
+  position: absolute;
+  background: #e8e4ba;
+  border-radius: 176px;
+}
 
 .loginFormContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .login_section {
-    width: 525px;
-    height: 78px;
-    padding: 10px;
-    margin-bottom: 14px;
-    margin-left: 238px;
-    color: #979696;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 25px;
-    font-family: Lexend;
-    font-weight: 400;
-    word-wrap: break-word
+  width: 525px;
+  height: 78px;
+  padding: 10px;
+  margin-bottom: 14px;
+  margin-left: 238px;
+  color: #979696;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 25px;
+  font-family: Lexend;
+  font-weight: 400;
+  word-wrap: break-word;
 }
 
 .signupIfNoAccount {
-    margin-left: 250px;
-    color: var(--Inner-Text-Grey, #979696);
-    text-align: center;
-    font-family: Lexend;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
+  margin-left: 250px;
+  color: var(--Inner-Text-Grey, #979696);
+  text-align: center;
+  font-family: Lexend;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
+.signUplink:visited {
+  color: var(--Dark-Brown, #7b5720);
+  text-align: center;
+  font-family: Lexend;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.signUplink:hover {
+  color: #7f1f1f;
+}
 
+.enterButton button {
+  width: 241px;
+  height: 60px;
+  margin-top: 48px;
+  margin-left: 381px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  background-color: var(--dark-brown);
+  color: white;
+  text-align: center;
+  font-family: Lexend;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
-.signUplink:visited{  
-    color: var(--Dark-Brown, #7B5720);
-    text-align: center;
-    font-family: Lexend;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-     }  
-.signUplink:hover{  
-    color: #7f1f1f;
-     }  
-
-
-
-.enterButton  button{
-   
-    width: 241px;
-    height: 60px;
-    margin-top: 48px;
-    margin-left: 381px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    background-color: var(--dark-brown);
-    color: white;
-    text-align: center;
-    font-family: Lexend;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    }
-
-    .enterButton  button:active{
-   
-        width: 241px;
-        height: 60px;
-        margin-top: 48px;
-        margin-left: 381px;
-        border-radius: 25px;
-        /* border: 1px solid #7f1f1f; */
-        background-color: #2f200a;
-        color: white;
-        text-align: center;
-        font-family: Lexend;
-        font-size: 36px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        }
+.enterButton button:active {
+  background-color: #2f200a;
+}
