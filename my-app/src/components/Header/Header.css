@@ -9,7 +9,7 @@ body {
 
 .header-container {
     display: flex;
-    height: 75px;
+    height: 70px;
     width: 100%;
     background-color: var(--light-brown);
     align-items: center;
