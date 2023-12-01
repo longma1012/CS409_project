@@ -7,6 +7,9 @@ body {
     font-family: "Lexend";
 }
 
+.home-link{
+    text-decoration: none;
+}
 .header-container {
     display: flex;
     height: 70px;

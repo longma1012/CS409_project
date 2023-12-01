@@ -1,0 +1,54 @@
+@import "../../variables.css";
+
+.main-area {
+    display: flex;
+    flex-flow: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 50px;
+}
+
+.CreatePost {
+    background-color: white;
+    width: 80%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 25px;
+    background-color: var(--background);
+}
+.create-post-input input {
+    width: 800px;
+    height: 45px;
+    box-sizing: border-box;
+    background-color: var(--input-background);
+    border: 0;
+    border-radius: 10px;
+    color: var(--inner-text-grey);
+    padding-left: 15px;
+}
+
+.create-post-button button {
+    width: 135;
+    height: 45px;
+    border-radius: 6px;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.create-post-button button:active {
+    background-color: #2f200a;
+}

@@ -5,7 +5,7 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   position: relative;
-  background: #f4f3e4;
+  background: var(--background);
 }
 
 .innerContainer {
@@ -19,7 +19,7 @@
 }
 
 .signUpTitle {
-  color: var(--Dark-Brown, #7b5720);
+  color: var(--dark-brown);
   text-align: center;
   font-family: "Limelight", cursive;
   font-size: 120px;
@@ -36,11 +36,14 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding-left: 18px;
-  color: #979696;
+  color: var(--inner-text-grey);
   font-size: 25px;
   font-family: Lexend;
   font-weight: 400;
   word-wrap: break-word;
+}
+.signup_uiuc_section::placeholder{
+  color: var(--inner-text-grey);
 }
 
 .otherformContainer {
@@ -55,11 +58,15 @@
   border: 1px solid #ccc;
   padding-left: 18px;
   border-radius: 5px;
-  color: #979696;
+  color: var(--inner-text-grey);
   font-size: 25px;
   font-family: Lexend;
   font-weight: 400;
   word-wrap: break-word;
+}
+
+.signup_section::placeholder {
+  color: var(--inner-text-grey);
 }
 .signupForm {
   display: flex;
@@ -72,7 +79,7 @@
   flex-shrink: 0;
   background: #fff;
   margin-left: 62px;
-  color: var(--Inner-Text-Grey, #979696);
+  color: var(--inner-text-grey);
 
   text-align: center;
   font-family: Lexend;
@@ -88,7 +95,7 @@
 
 .loginIfHaveAccount {
   margin-left: 519px;
-  color: var(--Inner-Text-Grey, #979696);
+  color: var(--inner-text-grey);
   text-align: center;
   font-family: Lexend;
   font-size: 20px;
@@ -98,7 +105,7 @@
 }
 
 .loginInLink:visited {
-  color: var(--Dark-Brown, #7b5720);
+  color: var(--dark-brown);
   text-align: center;
   font-family: Lexend;
   font-size: 20px;
@@ -120,7 +127,7 @@
   border-radius: 25px;
   border: 1px solid #ccc;
   background-color: var(--dark-brown);
-  color: white;
+  color: var(--background);
   text-align: center;
   font-family: Lexend;
   font-size: 36px;

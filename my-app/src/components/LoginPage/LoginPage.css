@@ -46,7 +46,7 @@
   padding: 10px;
   margin-bottom: 14px;
   margin-left: 238px;
-  color: #979696;
+  color: var(--inner-text-grey);
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 25px;
@@ -54,10 +54,13 @@
   font-weight: 400;
   word-wrap: break-word;
 }
+.login_section::placeholder {
+  color: var(--inner-text-grey);
+}
 
 .signupIfNoAccount {
   margin-left: 250px;
-  color: var(--Inner-Text-Grey, #979696);
+  color: var(--inner-text-grey);
   text-align: center;
   font-family: Lexend;
   font-size: 20px;
@@ -67,7 +70,7 @@
 }
 
 .signUplink:visited {
-  color: var(--Dark-Brown, #7b5720);
+  color: var(--dark-brown);
   text-align: center;
   font-family: Lexend;
   font-size: 20px;
@@ -87,7 +90,7 @@
   border-radius: 25px;
   border: 1px solid #ccc;
   background-color: var(--dark-brown);
-  color: white;
+  color: var(--background);
   text-align: center;
   font-family: Lexend;
   font-size: 36px;
