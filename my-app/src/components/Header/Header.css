@@ -100,7 +100,7 @@ body {
 }
 .username {
     margin-left: 16px;
-    font-size: 16px;
+    font: var(--text-small);
     font-weight: bold;
     color: var(--background);
 }

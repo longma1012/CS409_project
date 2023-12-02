@@ -1,0 +1,69 @@
+@import "../../variables.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    font-family: "Lexend";
+}
+
+.post-card{
+    background-color: white;
+    padding: 22px 22px 5px 22px;
+}
+
+.poster-area{
+    display: flex;
+}
+.poster-photo{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #F0F1FE;
+}
+.name-and-time{
+    margin-left: 15px;
+}
+.poster-name{
+    font: var(--text-regular);
+    color: var(--dark-brown);
+    margin: 0;
+}
+.post-time{
+    font: var(--text-small);
+    color: var(--inner-text-grey);
+    margin: 0;
+}
+
+.content-area{
+    margin-top: 10px;
+}
+.title{
+    font: var(--text-title);
+    margin: 0;
+}
+.content{
+    font: var(--text-regular);
+    color: var(--dark-grey);
+    margin: 5px;
+}
+
+.info-area{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+.category-tag{
+    border-radius: 20px;
+    padding: 5.5px 15px;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font: var(--text-small);
+}
+.data{
+    display: flex;
+    color: var(--inner-text-grey);
+    gap: 40px;
+}

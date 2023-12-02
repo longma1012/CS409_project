@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background);
-    font-family: "Lexend";
+    font: 18px 'Lexend';
     color: var(--dark-brown);
 }
 
@@ -39,5 +39,5 @@ body {
     justify-content: center;
     align-items: center;
     border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px
+    border-bottom-right-radius: 15px;
 }

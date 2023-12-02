@@ -5,12 +5,13 @@ const Categories = () => {
     return (
         <div className="categories-container">
             <div className="all">All</div>
-            <div className="category">Category1</div>
-            <div className="category">Category2</div>
-            <div className="category">Category3</div>
-            <div className="category">Category4</div>
-            <div className="category">Category5</div>
-            <div className="category">Category6</div>
+            <div className="category">Alumni Events</div>
+            <div className=" category">Lifestyle and Hobbies</div>
+            <div className="category">Job and Career</div>
+            <div className="category">Food & Drink</div>
+            <div className="category">Academic Discussions</div>
+            <div className="category">Food & Drink</div>
+            <div className="category">Emotional Life</div>
         </div>
     );
 };

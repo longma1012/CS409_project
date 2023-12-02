@@ -21,11 +21,11 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
-    margin-left: 25px;
-    background-color: var(--background);
+    margin-left: 22px;
+    background-color: var(--light-brown);
 }
 .create-post-input input {
-    width: 800px;
+    width: 850px;
     height: 45px;
     box-sizing: border-box;
     background-color: var(--input-background);
@@ -33,22 +33,36 @@
     border-radius: 10px;
     color: var(--inner-text-grey);
     padding-left: 15px;
+    font-size: 14px;
+}
+.create-post-input input::placeholder{
+    color: var(--inner-text-grey);
 }
 
 .create-post-button button {
-    width: 135;
+    width: 140px;
     height: 45px;
+    margin-right: 30px;
     border-radius: 6px;
     background-color: var(--dark-brown);
     color: var(--background);
     text-align: center;
     font-family: Lexend;
-    font-size: 36px;
-    font-style: normal;
+    font-size: 18px;
+    /* font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    line-height: normal; */
 }
 
 .create-post-button button:active {
     background-color: #2f200a;
+}
+
+.post-card-container{
+    margin-top: 35px;
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    background-color: var(--background);
 }

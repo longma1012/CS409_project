@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../Header/Header.jsx";
 import Categories from "./Categories.jsx";
+import PostCard from "./PostCard.jsx";
+
 import "./MainPage.css";
 
 import tempPhoto from "../../images/Memoji Boys 2-1.png";
@@ -24,6 +26,12 @@ const MainPage = () => {
                     <div className="create-post-button">
                         <button>Create Post</button>
                     </div>
+                </div>
+                <div className="post-card-container">
+                    <PostCard/>
+                    <PostCard/>
+                    <PostCard/>
+                    <PostCard/>
                 </div>
             </div>
         </div>
