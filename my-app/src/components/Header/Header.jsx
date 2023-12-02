@@ -18,9 +18,11 @@ const Header = () => {
             </Link>
             <div className="search-bar">
                 <input type="text" placeholder="Type here to search..." />
-                <div className="search-icon">
-                    <img src={searchIcon} alt="" />
-                </div>
+                <Link to="/searched">
+                    <div className="search-icon">
+                        <img src={searchIcon} alt="" />
+                    </div>
+                </Link>
             </div>
             <div className="User">
                 <div className="photo-container">

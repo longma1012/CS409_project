@@ -4,6 +4,7 @@ import React from "react";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignUpPage from "./components/SignUpPage/SignUpPage";
 import MainPage from "./components/MainPage/MainPage";
+import AfterSearch from "./components/MainPage/AfterSearch";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/main" element={<MainPage />} />
+          <Route path="/searched" element={<AfterSearch />} />
         </Routes>
       </div>
     </Router>
