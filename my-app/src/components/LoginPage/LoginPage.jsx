@@ -1,25 +1,42 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 import { Link } from "react-router-dom";
+import {auth} from "../../config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
-    //   const [netId, setNetId] = useState("");
-    //   const [password, setPassword] = useState("");
-    //   const [confirmPassword, setConfirmPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const signIn = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, username, password)
+            .then((userCredential) => {
+                console.log(userCredential);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     return (
         <div className="loginContainer">
-            <div className="loginInnerContainer">
+            <form className="loginInnerContainer" onSubmit={signIn}>
                 <div className="loginTitle"> Login</div>
                 <div className="loginFormContainer">
                     <input
                         type="text"
                         className="login_section"
                         placeholder="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                     <input
                         type="text"
                         className="login_section"
                         placeholder="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="signupIfNoAccount">
                         Don’t have an account?
@@ -34,7 +51,7 @@ const LoginPage = () => {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };
