@@ -37,12 +37,20 @@ body {
 
 .content-area{
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    /* border: 1px solid red; */
 }
-.title{
+.post-card-title{
+    max-width: 90%;
     font: var(--text-title);
     margin: 0;
+    text-align: left;
+    padding: 0;
 }
-.content{
+
+.post-card-content{
     font: var(--text-regular);
     color: var(--dark-grey);
     margin: 5px;

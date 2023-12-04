@@ -1,10 +1,9 @@
-import logo from "./logo.svg";
-import "./App.css";
 import React from "react";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignUpPage from "./components/SignUpPage/SignUpPage";
 import MainPage from "./components/MainPage/MainPage";
 import AfterSearch from "./components/MainPage/AfterSearch";
+import SelfPost from "./components/SelfPost/SelfPost";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 function App() {
@@ -16,6 +15,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/searched" element={<AfterSearch />} />
+          <Route path="/createpost" element={<SelfPost />} />
         </Routes>
       </div>
     </Router>

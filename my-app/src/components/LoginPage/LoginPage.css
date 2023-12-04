@@ -1,10 +1,6 @@
 @import "../../variables.css";
 
 .loginContainer {
-  /* width: 100%;
-  height: 100%;
-  position: relative;
-  background: #f4f3e4; */
   width: 100%;
   height: 100vh; /* Use vh for full viewport height if the container is the outermost element */
   display: flex; /* Set display to flex to use flexbox properties */
@@ -14,7 +10,21 @@
   background: #f4f3e4;
 }
 
+.loginInnerContainer {
+  width: 1000px;
+  height: 540px;
+  margin: auto;
+  position: absolute;
+  background: #e8e4ba;
+  border-radius: 176px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
 .loginTitle {
+  margin-top: 25px;
   color: var(--Dark-Brown, #7b5720);
   text-align: center;
   font-family: "Limelight", cursive;
@@ -24,28 +34,21 @@
   line-height: normal;
 }
 
-.loginInnerContainer {
-  width: 1000px;
-  height: 558px;
-  /* left: 256px;
-  top: 185px; */
-  margin: auto;
-  position: absolute;
-  background: #e8e4ba;
-  border-radius: 176px;
-}
-
 .loginFormContainer {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 50px;
+  /* border: 1px solid red; */
 }
 
-.login_section {
+.login-input-section {
   width: 525px;
   height: 78px;
-  padding: 10px;
   margin-bottom: 14px;
-  margin-left: 238px;
+  padding-left: 15px;
   color: var(--inner-text-grey);
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -54,7 +57,8 @@
   font-weight: 400;
   word-wrap: break-word;
 }
-.login_section::placeholder {
+
+.login-input-section::placeholder {
   color: var(--inner-text-grey);
 }
 
@@ -82,11 +86,28 @@
   color: #7f1f1f;
 }
 
-.enterButton button {
-  width: 241px;
+.login-error{
+  /* align-self: center; */
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  color: red;
+  font-family: Lexend;
+  font-size: 14px;
+}
+
+.login-error p {
+  margin: 0;
+}
+
+.login-enterButton{
+  align-self: center;
+}
+
+.login-enterButton button {
+  width: 240px;
   height: 60px;
-  margin-top: 48px;
-  margin-left: 381px;
+  margin-top: 5px;
   border-radius: 25px;
   border: 1px solid #ccc;
   background-color: var(--dark-brown);
@@ -99,6 +120,6 @@
   line-height: normal;
 }
 
-.enterButton button:active {
+.login-enterButton button:active {
   background-color: #2f200a;
 }

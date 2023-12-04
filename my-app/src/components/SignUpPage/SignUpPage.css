@@ -1,130 +1,116 @@
+@import "../../variables.css";
+
 .container {
-  width: 100%;
-  height: 100vh; /* Use vh for full viewport height if the container is the outermost element */
-  display: flex; /* Set display to flex to use flexbox properties */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  position: relative;
-  background: var(--background);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: var(--background);
 }
 
 .innerContainer {
-  width: 1008.17px;
-  height: 765px;
-  margin: auto;
-  background: #e8e4ba;
-  border-radius: 176px;
-  display: flex;
-  flex-direction: column;
+    width: 1000px;
+    height: 580px;
+    margin: auto;
+    background: #e8e4ba;
+    border-radius: 176px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .signUpTitle {
-  color: var(--dark-brown);
-  text-align: center;
-  font-family: "Limelight", cursive;
-  font-size: 120px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+    margin-top: 25px;
+    color: var(--dark-brown);
+    text-align: center;
+    font-family: "Limelight", cursive;
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
-.signup_uiuc_section {
-  width: 816px;
-  height: 67px;
-  margin-left: 102px;
-  margin-bottom: 13px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding-left: 18px;
-  color: var(--inner-text-grey);
-  font-size: 25px;
-  font-family: Lexend;
-  font-weight: 400;
-  word-wrap: break-word;
-}
-.signup_uiuc_section::placeholder{
-  color: var(--inner-text-grey);
+.signUpformationContainer {
+    height: 262px;
+    width: 525px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    /* border: 1px solid red; */
 }
 
-.otherformContainer {
-  display: flex;
-  flex-direction: row;
-}
-.signup_section {
-  width: 525px;
-  height: 67px;
-  margin-bottom: 12px;
-  margin-left: 102px;
-  border: 1px solid #ccc;
-  padding-left: 18px;
-  border-radius: 5px;
-  color: var(--inner-text-grey);
-  font-size: 25px;
-  font-family: Lexend;
-  font-weight: 400;
-  word-wrap: break-word;
+.signup-input-section {
+    width: 100%;
+    height: 78px;
+    padding-left: 15px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: var(--inner-text-grey);
+    font-size: 25px;
+    font-family: Lexend;
+    font-weight: 400;
+    word-wrap: break-word;
 }
 
-.signup_section::placeholder {
-  color: var(--inner-text-grey);
-}
-.signupForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.photoUpload {
-  width: 229px;
-  height: 229px;
-  flex-shrink: 0;
-  background: #fff;
-  margin-left: 62px;
-  color: var(--inner-text-grey);
-
-  text-align: center;
-  font-family: Lexend;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
+.signup-input-section::placeholder {
+    color: var(--inner-text-grey);
 }
 
 .loginIfHaveAccount {
-  margin-left: 519px;
-  color: var(--inner-text-grey);
-  text-align: center;
-  font-family: Lexend;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  margin-left: 250px;
+    color: var(--inner-text-grey);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .loginInLink:visited {
-  color: var(--dark-brown);
-  text-align: center;
-  font-family: Lexend;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+    color: var(--dark-brown);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .loginInLink:hover {
-  color: #7f1f1f;
+    color: #7f1f1f;
 }
 
-.enterButtonSignup button {
-  width: 241px;
+.signup-error{
+  /* align-self: center; */
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  color: red;
+  font-family: Lexend;
+  font-size: 14px;
+  /* margin-bottom: 5px; */
+}
+
+.signup-error p {
+  margin: 0;
+}
+
+.signup-enterButton{
+  align-self: center;
+}
+.signup-enterButton button {
+  width: 240px;
   height: 60px;
-  margin-left: 393px;
-  margin-top: 48px;
-  margin-bottom: 55px;
   border-radius: 25px;
+  margin-top: 5px;
+  margin-bottom: 40px;
   border: 1px solid #ccc;
   background-color: var(--dark-brown);
   color: var(--background);
@@ -134,4 +120,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+.signup-enterButton button:active {
+  background-color: #2f200a;
 }

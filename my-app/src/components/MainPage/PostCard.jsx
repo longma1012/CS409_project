@@ -16,15 +16,16 @@ const PostCard = () => {
                     <p className="post-time">2 days ago</p>
                 </div>
             </div>
+
             <div className="content-area">
-                <p className="title">
+                <div className="post-card-title">
                     Road Construction Update near Grainger Library
-                </p>
-                <p className="content">
+                </div>
+                <div className="post-card-content">
                     Recent road repairs near Grainger Library have caused
                     several street closures. This might lead to detours for
                     vehicles in the area. Please plan your route ...
-                </p>
+                </div>
             </div>
             <div className="info-area">
                 <div className="category-tag">Alumni Events</div>

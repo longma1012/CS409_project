@@ -6,4 +6,4 @@ var UiucSchema = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model("User", UiucSchema);
+module.exports = mongoose.model("Uiuc", UiucSchema);

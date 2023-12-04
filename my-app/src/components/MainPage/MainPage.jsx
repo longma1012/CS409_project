@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Header/Header.jsx";
 import Categories from "./Categories.jsx";
 import PostCard from "./PostCard.jsx";
+import { Link } from "react-router-dom";
 
 import "./MainPage.css";
 
@@ -20,12 +21,14 @@ const MainPage = () => {
                     <div className="create-post-input">
                         <input
                             type="text"
-                            placeholder="Let's share what going on your mind..."
+                            placeholder="Let's share what's going on your mind..."
                         />
                     </div>
-                    <div className="create-post-button">
-                        <button>Create Post</button>
-                    </div>
+                    <Link to="/createpost">
+                        <div className="create-post-button">
+                            <button>Create Post</button>
+                        </div>
+                    </Link>
                 </div>
                 <div className="post-card-container">
                     <PostCard/>

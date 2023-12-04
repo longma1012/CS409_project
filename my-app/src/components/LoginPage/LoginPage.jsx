@@ -1,25 +1,51 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
-    //   const [netId, setNetId] = useState("");
-    //   const [password, setPassword] = useState("");
-    //   const [confirmPassword, setConfirmPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [signInError, setSignInError] = useState(null);
+    const navigate = useNavigate();
+
+    // console.log(auth?.currentUser?.email);
+
+    const signIn = async (e) => {
+        e.preventDefault();
+        try {
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            console.log(userCredential);
+            navigate("/main");
+        } catch (error) {
+            console.log(error);
+            setSignInError("Invalid email or password. Please try again.");
+        }
+    };
+
     return (
         <div className="loginContainer">
-            <div className="loginInnerContainer">
+            <form className="loginInnerContainer" onSubmit={signIn}>
                 <div className="loginTitle"> Login</div>
                 <div className="loginFormContainer">
                     <input
                         type="text"
-                        className="login_section"
-                        placeholder="username"
+                        className="login-input-section"
+                        placeholder="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
-                        type="text"
-                        className="login_section"
+                        type="password"
+                        className="login-input-section"
                         placeholder="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="signupIfNoAccount">
                         Don’t have an account?
@@ -27,14 +53,16 @@ const LoginPage = () => {
                             Sign up
                         </Link>
                     </div>
-
-                    <div className="enterButton">
-                        <Link to="/main">
-                            <button type="submit">Enter</button>
-                        </Link>
+                    <div className="login-error">
+                        {signInError && <p>{signInError}</p>}
+                    </div>
+                    <div className="login-enterButton">
+                        <button onClick={signIn} type="submit">
+                            Enter
+                        </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };
