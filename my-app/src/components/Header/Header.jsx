@@ -27,8 +27,7 @@ const Header = () => {
                 setCurrentUserEmail("");
             }
         });
-
-        return () => unsubscribe(); // Unsubscribe from the auth state listener on component unmount
+        return () => unsubscribe();
     }, []);
 
     // console.log(auth?.currentUser?.email);

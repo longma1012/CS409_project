@@ -3,7 +3,6 @@ import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -11,7 +10,7 @@ const LoginPage = () => {
     const [signInError, setSignInError] = useState(null);
     const navigate = useNavigate();
 
-    console.log(auth?.currentUser?.email);
+    // console.log(auth?.currentUser?.email);
 
     const signIn = async (e) => {
         e.preventDefault();

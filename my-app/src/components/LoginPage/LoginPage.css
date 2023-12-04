@@ -1,10 +1,6 @@
 @import "../../variables.css";
 
 .loginContainer {
-  /* width: 100%;
-  height: 100%;
-  position: relative;
-  background: #f4f3e4; */
   width: 100%;
   height: 100vh; /* Use vh for full viewport height if the container is the outermost element */
   display: flex; /* Set display to flex to use flexbox properties */
@@ -16,9 +12,7 @@
 
 .loginInnerContainer {
   width: 1000px;
-  height: 560px;
-  /* left: 256px;
-  top: 185px; */
+  height: 540px;
   margin: auto;
   position: absolute;
   background: #e8e4ba;
@@ -46,15 +40,13 @@
   align-items: center;
   padding: 0;
   margin-bottom: 50px;
-  /* border: 1px solid #7b5720; */
 }
 
 .login_section {
   width: 525px;
   height: 78px;
-  padding: 10px;
   margin-bottom: 14px;
-  /* margin-left: 238px; */
+  padding-left: 15px;
   color: var(--inner-text-grey);
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -63,6 +55,7 @@
   font-weight: 400;
   word-wrap: break-word;
 }
+
 .login_section::placeholder {
   color: var(--inner-text-grey);
 }
@@ -95,11 +88,14 @@
   /* align-self: center; */
   margin: 0;
   padding: 0;
-  height: 30px;
+  height: 20px;
   color: red;
-  /* border: 1px solid #7b5720; */
   font-family: Lexend;
   font-size: 14px;
+}
+
+.error p {
+  margin: 0;
 }
 
 .enterButton{
@@ -109,6 +105,7 @@
 .enterButton button {
   width: 240px;
   height: 60px;
+  margin-top: 5px;
   border-radius: 25px;
   border: 1px solid #ccc;
   background-color: var(--dark-brown);

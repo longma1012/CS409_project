@@ -1,52 +1,65 @@
 import React, { useState } from "react";
 import "./SignUpPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpPage = () => {
-    //   const [netId, setNetId] = useState("");
-    //   const [password, setPassword] = useState("");
-    //   const [confirmPassword, setConfirmPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [signUpError, setSignUpError] = useState(null);
+    const navigate = useNavigate();
+
+    const signUp = async (e) => {
+        e.preventDefault();
+        if (!email.endsWith("@illinois.edu")) {
+            setSignUpError("Not an UIUC email");
+        } else if (password !== confirmPassword) {
+            setSignUpError("Passwords do not match");
+        } else {
+            try {
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+                console.log(userCredential);
+                navigate("/main");
+            } catch (error) {
+                console.log(error);
+                setSignUpError("Invalid email or password. Please try again.");
+            }
+        }
+    };
+
     return (
         <div className="container">
             <div className="innerContainer">
                 <div className="signUpTitle"> Sign Up</div>
-                <div className="uiucInformationContainer">
+                <div className="signUpformationContainer">
                     <input
                         type="text"
-                        className="signup_uiuc_section"
-                        placeholder="Your UIUC Net ID"
+                        className="signup_section"
+                        placeholder="Enter your UIUC email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <input
-                        type="text"
-                        className="signup_uiuc_section"
-                        placeholder="Your UIUC password"
+                        type="password"
+                        className="signup_section"
+                        placeholder="Create a password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
-                </div>
-                <div className="otherformContainer">
-                    <div className="signupForm">
-                        <input
-                            type="text"
-                            className="signup_section"
-                            placeholder="Create a username"
-                        />
-                        <input
-                            type="text"
-                            className="signup_section"
-                            placeholder="Create a password"
-                        />
-                        <input
-                            type="text"
-                            className="signup_section"
-                            placeholder="Confirm your password"
-                        />
-                    </div>
-                    <div className="photoUpload">
-                        <label for="profile-upload">
-                            Upload <br></br>Profile Picture
-                        </label>
-                        <input type="file" id="profile-upload" hidden />
-                    </div>
+                    <input
+                        type="password"
+                        className="signup_section"
+                        placeholder="Confrim your password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
                 </div>
                 <div className="loginIfHaveAccount">
                     Already have an account?
@@ -54,11 +67,13 @@ const SignUpPage = () => {
                         Login
                     </Link>
                 </div>
-
-                <div className="enterButtonSignup">
-                    <Link to="/main">
-                        <button type="submit">Enter</button>
-                    </Link>
+                <div className="error">
+                    {signUpError && <p>{signUpError}</p>}
+                </div>
+                <div className="enterButton">
+                    <button onClick={signUp} type="submit">
+                        Enter
+                    </button>
                 </div>
             </div>
         </div>
