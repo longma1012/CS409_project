@@ -34,6 +34,26 @@ def getUsers(conn):
     users = [str(d['data'][x]['_id']) for x in range(len(d['data']))]
 
     return users
+def pushUiuc():
+    userCount = len(uiucNetid)
+    uiucNetid =["xinyia2", "longma2", "haoyus2", "yining16", "tingyin4", "xu89","binglin3","shulinp2", "zbian4" , "deepakv", "zhang414"]
+    uiucPasswords =  [
+    'H2"?V">1Ftn}',
+    'y^d6H=XTTzTj',
+    '.)!J0.4~:;QQ',
+    'qY99h#Hi2u_.',
+    'G(/2mjfmg2})',
+    'nz-!Z<[mr(1R',
+    'SNV^K\;BhG81',
+    'vgB>9z`iL#$^',
+    't|0/L/![?]AP',
+    'WFisCcD6,8W0',
+    'eo5"P+CJK@8S'
+]
+    
+
+
+    return
 
 def main(argv):
 
