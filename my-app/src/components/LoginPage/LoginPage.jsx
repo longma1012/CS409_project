@@ -35,14 +35,14 @@ const LoginPage = () => {
                 <div className="loginFormContainer">
                     <input
                         type="text"
-                        className="login_section"
+                        className="login-input-section"
                         placeholder="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         type="password"
-                        className="login_section"
+                        className="login-input-section"
                         placeholder="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -53,10 +53,10 @@ const LoginPage = () => {
                             Sign up
                         </Link>
                     </div>
-                    <div className="error">
+                    <div className="login-error">
                         {signInError && <p>{signInError}</p>}
                     </div>
-                    <div className="enterButton">
+                    <div className="login-enterButton">
                         <button onClick={signIn} type="submit">
                             Enter
                         </button>

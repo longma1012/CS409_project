@@ -45,7 +45,7 @@ const SignUpPage = () => {
                 <div className="signUpformationContainer">
                     <input
                         type="text"
-                        className="signup_section"
+                        className="signup-input-section"
                         placeholder="Enter your UIUC email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -53,14 +53,14 @@ const SignUpPage = () => {
 
                     <input
                         type="password"
-                        className="signup_section"
+                        className="signup-input-section"
                         placeholder="Create a password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <input
                         type="password"
-                        className="signup_section"
+                        className="signup-input-section"
                         placeholder="Confrim your password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
@@ -72,10 +72,10 @@ const SignUpPage = () => {
                         Login
                     </Link>
                 </div>
-                <div className="error">
+                <div className="signup-error">
                     {signUpError && <p>{signUpError}</p>}
                 </div>
-                <div className="enterButton">
+                <div className="signup-enterButton">
                     <button onClick={signUp} type="submit">
                         Enter
                     </button>
