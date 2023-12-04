@@ -9,4 +9,13 @@ module.exports = function (app, router) {
 
     var tasksRouter = require('./tasks');
     app.use('/api/tasks', tasksRouter);
+
+    var uiucRouter = require('./uiuc');
+    app.use('/api/uiuc', uiucRouter);
+
+    var postRouter = require('./post');
+    app.use('/api/post', postRouter);
+
+    var commentsRouter = require('./comments');
+    app.use('/api/comments', commentsRouter);
 };
