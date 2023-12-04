@@ -14,7 +14,22 @@
   background: #f4f3e4;
 }
 
+.loginInnerContainer {
+  width: 1000px;
+  height: 560px;
+  /* left: 256px;
+  top: 185px; */
+  margin: auto;
+  position: absolute;
+  background: #e8e4ba;
+  border-radius: 176px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .loginTitle {
+  margin-top: 25px;
   color: var(--Dark-Brown, #7b5720);
   text-align: center;
   font-family: "Limelight", cursive;
@@ -24,20 +39,14 @@
   line-height: normal;
 }
 
-.loginInnerContainer {
-  width: 1000px;
-  height: 558px;
-  /* left: 256px;
-  top: 185px; */
-  margin: auto;
-  position: absolute;
-  background: #e8e4ba;
-  border-radius: 176px;
-}
-
 .loginFormContainer {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 50px;
+  /* border: 1px solid #7b5720; */
 }
 
 .login_section {
@@ -45,7 +54,7 @@
   height: 78px;
   padding: 10px;
   margin-bottom: 14px;
-  margin-left: 238px;
+  /* margin-left: 238px; */
   color: var(--inner-text-grey);
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -82,11 +91,24 @@
   color: #7f1f1f;
 }
 
+.error{
+  /* align-self: center; */
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  color: red;
+  /* border: 1px solid #7b5720; */
+  font-family: Lexend;
+  font-size: 14px;
+}
+
+.enterButton{
+  align-self: center;
+}
+
 .enterButton button {
-  width: 241px;
+  width: 240px;
   height: 60px;
-  margin-top: 48px;
-  margin-left: 381px;
   border-radius: 25px;
   border: 1px solid #ccc;
   background-color: var(--dark-brown);

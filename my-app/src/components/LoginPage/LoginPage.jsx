@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
-import { Link } from "react-router-dom";
-import {auth} from "../../config/firebase";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [signInError, setSignInError] = useState(null);
+    const navigate = useNavigate();
 
-    const signIn = (e) => {
+    console.log(auth?.currentUser?.email);
+
+    const signIn = async (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, username, password)
-            .then((userCredential) => {
-                console.log(userCredential);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        try {
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            console.log(userCredential);
+            navigate("/main");
+        } catch (error) {
+            console.log(error);
+            setSignInError("Invalid email or password. Please try again.");
+        }
     };
 
     return (
@@ -27,12 +37,12 @@ const LoginPage = () => {
                     <input
                         type="text"
                         className="login_section"
-                        placeholder="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
-                        type="text"
+                        type="password"
                         className="login_section"
                         placeholder="password"
                         value={password}
@@ -44,11 +54,13 @@ const LoginPage = () => {
                             Sign up
                         </Link>
                     </div>
-
+                    <div className="error">
+                        {signInError && <p>{signInError}</p>}
+                    </div>
                     <div className="enterButton">
-                        <Link to="/main">
-                            <button type="submit">Enter</button>
-                        </Link>
+                        <button onClick={signIn} type="submit">
+                            Enter
+                        </button>
                     </div>
                 </div>
             </form>
