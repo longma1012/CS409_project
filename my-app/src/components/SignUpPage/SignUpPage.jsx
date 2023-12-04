@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SignUpPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {    createUserWithEmailAndPassword} from "firebase/auth";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState("");
@@ -13,6 +13,7 @@ const SignUpPage = () => {
 
     const signUp = async (e) => {
         e.preventDefault();
+        
         if (!email.endsWith("@illinois.edu")) {
             setSignUpError("Not an UIUC email");
         } else if (password !== confirmPassword) {
@@ -27,8 +28,12 @@ const SignUpPage = () => {
                 console.log(userCredential);
                 navigate("/main");
             } catch (error) {
+                if (error.code === "auth/email-already-in-use") {
+                    setSignUpError("Email already exists, please go to login.");
+                } else {
                 console.log(error);
                 setSignUpError("Invalid email or password. Please try again.");
+                }
             }
         }
     };
