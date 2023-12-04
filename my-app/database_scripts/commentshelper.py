@@ -7,7 +7,7 @@ for i in range(20):
     comment = {
         "Content": f"Comment content {i + 1}",
         "createTime": datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "LinkedPostID": f"PostID_{i + 1}",
+        "LinkedPostID": "",
         "commentUserID": ""  # Set commentUserID to an empty string
     }
     comments.append(comment)
