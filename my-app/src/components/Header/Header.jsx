@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import tempPhoto from "../../images/Memoji Boys 2-1.png";
-import searchIcon from "../../images/SearchIcon.png";
-import Logo from "../../images/ProjectLogo.png";
-import "./Header.css";
 import { auth } from "../../config/firebase";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import styles from "./Header.module.css";
+
+import Logo from "../../images/ProjectLogo.png";
+import searchIcon from "../../images/SearchIcon.png";
+// import tempPhoto from "../../images/Memoji Boys 2-1.png";
 
 const Header = () => {
     const [currentUserEmail, setCurrentUserEmail] = useState("");
@@ -22,10 +23,12 @@ const Header = () => {
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setCurrentUserEmail(user.email);
-            } else {
+                const atIndex = user.email.indexOf('@');
+                const name = atIndex !== -1 ? user.email.slice(0, atIndex) : user.email;
+                setCurrentUserEmail(name);
+              } else {
                 setCurrentUserEmail("");
-            }
+              }
         });
         return () => unsubscribe();
     }, []);
@@ -33,30 +36,30 @@ const Header = () => {
     // console.log(auth?.currentUser?.email);
 
     return (
-        <div className="header-container">
-            <Link to="/main" className="home-link">
-                <div className="home">
-                    <div className="logo-container">
-                        <img src={Logo} alt="" className="logo-image" />
+        <div className={styles.headerContainer}>
+            <Link to="/main" className={styles.homeLink}>
+                <div className={styles.home}>
+                    <div className={styles.logoContainer}>
+                        <img src={Logo} alt="" className={styles.logoImage} />
                     </div>
-                    <header className="web-name">I-AlumniHub</header>
+                    <header className={styles.webName}>I-AlumniHub</header>
                 </div>
             </Link>
-            <div className="search-bar">
+            <div className={styles.searchBar}>
                 <input type="text" placeholder="Type here to search..." />
                 <Link to="/searched">
-                    <div className="search-icon">
+                    <div className={styles.searchIcon}>
                         <img src={searchIcon} alt="" />
                     </div>
                 </Link>
             </div>
-            <div className="User">
-                {/* <div className="photo-container">
-                    <img src={tempPhoto} alt="" className="photo" />
-                </div> */}
-                <p className="username">{currentUserEmail}</p>
+            <div className={styles.User}>
+                {/* <div className={styles.photoContainer}>
+                <img src={tempPhoto} alt="" className={styles.photo} />
+            </div> */}
+                <p className={styles.username}>{currentUserEmail}</p>
                 <Link to="/">
-                    <button onClick={logout} className="logout-btn">
+                    <button onClick={logout} className={styles.logoutBtn}>
                         Logout
                     </button>
                 </Link>

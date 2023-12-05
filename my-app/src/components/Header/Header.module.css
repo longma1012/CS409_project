@@ -7,10 +7,10 @@ body {
     font-family: "Lexend";
 }
 
-.home-link{
+.homeLink{
     text-decoration: none;
 }
-.header-container {
+.headerContainer {
     display: flex;
     height: 70px;
     width: 100%;
@@ -28,7 +28,7 @@ body {
     align-items: center;
     padding: 8px 12px;
 }
-.logo-container {
+.logoContainer {
     background-color: var(--background);
     border-radius: 5px;
     width: 42px;
@@ -38,11 +38,11 @@ body {
     justify-content: center;
     padding: 2px;
 }
-.logo-image {
+.logoImage {
     height: 100%;
     width: auto;
 }
-.web-name {
+.webName {
     margin-left: 20px;
     font-family: "Lexend Deca";
     font-size: 28px;
@@ -50,13 +50,13 @@ body {
     color: var(--dark-brown);
 }
 
-.search-bar {
+.searchBar {
     position: relative;
     display: inline-block;
 }
-.search-bar input {
+.searchBar input {
     padding-right: 30px;
-    width: 600px;
+    width: 55vw;
     height: 40px;
     box-sizing: border-box;
     background-color: var(--background);
@@ -65,10 +65,10 @@ body {
     color: var(--light-brown);
     padding-left: 15px;
 }
-.search-bar input::placeholder {
+.searchBar input::placeholder {
     color: var(--light-brown);
 }
-.search-icon {
+.searchIcon {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -84,7 +84,7 @@ body {
     align-items: center;
     padding: 8px 12px;
 }
-.photo-container {
+/* .photoContainer {
     background-color: var(--background);
     width: 35px;
     height: 35px;
@@ -97,7 +97,7 @@ body {
 .photo {
     height: 100%;
     width: auto;
-}
+} */
 .username {
     margin-left: 16px;
     font: var(--text-regular);
@@ -105,7 +105,7 @@ body {
     color: var(--background);
 }
 
-.logout-btn{
+.logoutBtn{
     width: 80px;
     margin-left: 25px;
     border-radius: 20px;

@@ -12,7 +12,7 @@
 
 .innerContainer {
     width: 1000px;
-    height: 580px;
+    height: 620px;
     margin: auto;
     background: #e8e4ba;
     border-radius: 176px;
@@ -34,8 +34,8 @@
 }
 
 .signUpformationContainer {
-    height: 262px;
-    width: 525px;
+    /* height: 262px; */
+    width: 540px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -44,8 +44,8 @@
     /* border: 1px solid red; */
 }
 
-.signup-input-section {
-    width: 100%;
+.signupInputSection {
+    width: 525px;
     height: 78px;
     padding-left: 15px;
     margin-bottom: 14px;
@@ -58,12 +58,13 @@
     word-wrap: break-word;
 }
 
-.signup-input-section::placeholder {
+.signupInputSection::placeholder {
     color: var(--inner-text-grey);
-}
+  }
 
 .loginIfHaveAccount {
-  margin-left: 250px;
+    /* margin-left: 250px; */
+    align-self: flex-end;
     color: var(--inner-text-grey);
     text-align: center;
     font-family: Lexend;
@@ -71,6 +72,9 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    display: flex;
+    /* border: 1px solid red; */
+    white-space: nowrap;
 }
 
 .loginInLink:visited {
@@ -87,40 +91,40 @@
     color: #7f1f1f;
 }
 
-.signup-error{
-  /* align-self: center; */
-  margin: 0;
-  padding: 0;
-  height: 20px;
-  color: red;
-  font-family: Lexend;
-  font-size: 14px;
-  /* margin-bottom: 5px; */
+.signupError {
+    /* align-self: center; */
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    color: red;
+    font-family: Lexend;
+    font-size: 14px;
+    /* margin-bottom: 5px; */
 }
 
-.signup-error p {
-  margin: 0;
+.signupError p {
+    margin: 0;
 }
 
-.signup-enterButton{
-  align-self: center;
+.signupEnterButton {
+    align-self: center;
 }
-.signup-enterButton button {
-  width: 240px;
-  height: 60px;
-  border-radius: 25px;
-  margin-top: 5px;
-  margin-bottom: 40px;
-  border: 1px solid #ccc;
-  background-color: var(--dark-brown);
-  color: var(--background);
-  text-align: center;
-  font-family: Lexend;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+.signupEnterButton button {
+    width: 240px;
+    height: 60px;
+    border-radius: 25px;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    border: 1px solid #ccc;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
-.signup-enterButton button:active {
-  background-color: #2f200a;
+.signupEnterButton button:active {
+    background-color: #2f200a;
 }

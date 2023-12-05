@@ -1,6 +1,6 @@
 @import "../../variables.css";
 
-.self-post-container {
+.selfPostContainer {
     margin-top: 60px;
     display: flex;
     /* justify-content: center; */
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.self-post-title {
+.selfPostTitle {
     width: 80vw;
     padding: 16px 0;
     background-color: #ffffff;
@@ -16,11 +16,11 @@
     justify-content: space-between;
     align-items: center;
 }
-.self-post-title-text {
+.selfPostTitleText {
     margin-left: 45px;
     font: var(--text-title);
 }
-.self-post-title-input input {
+.selfPostTitleInput input {
     width: 65vw;
     height: 45px;
     margin-right: 45px;
@@ -33,18 +33,19 @@
     padding-left: 15px;
     font-size: 14px;
 }
-.self-post-title-input input::placeholder {
+.selfPostTitleInput input::placeholder {
     color: var(--inner-text-grey);
 }
 
-.category-choose {
+.categoryChoose {
     margin: 20px 0;
     width: 80vw;
     /* border: 1px solid red; */
 }
 
-.category-choose-btn {
-    width: 300px;
+.categoryChooseBtn {
+    width: fit-content;
+    padding: 2px 30px;
     height: 50px;
     border-radius: 15px;
     background-color: var(--light-brown);
@@ -55,7 +56,7 @@
     align-items: center;
 }
 
-.content-container {
+.contentContainer {
     width: 80vw;
     padding: 30px 0;
     background-color: #ffffff;
@@ -63,12 +64,12 @@
     justify-content: space-between;
     align-items: center;
 }
-.self-post-content-text {
+.selfPostContentText {
     margin-left: 45px;
     align-self: flex-start;
     font: var(--text-title);
 }
-.self-post-content-input textarea {
+.selfPostContentInput textarea {
     width: 65vw;
     height: 400px;
     margin-right: 45px;
@@ -82,11 +83,11 @@
     font: var(--text-small);
     font-size: 14px;
 }
-.self-post-content-input textarea::placeholder {
+.selfPostContentInput textarea::placeholder {
     color: var(--inner-text-grey);
 }
 
-.self-post-create {
+.selfPostCreate {
     margin: 20px 0;
     width: 80vw;
     /* border: 1px solid red; */
@@ -94,7 +95,7 @@
     justify-content: flex-end;
 }
 
-.self-post-create-btn {
+.selfPostCreateBtn {
     width: 140px;
     height: 50px;
     border-radius: 15px;
@@ -108,6 +109,6 @@
     font-size: 18px;
 }
 
-.self-post-create-btn:active {
+.selfPostCreateBtn:active {
     background-color: #2f200a;
 }

@@ -1,0 +1,108 @@
+@import "../../variables.css";
+
+body {
+    font: var(--text-regular);
+}
+
+.viewPostContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 10vw 5vh 10vw;
+    gap: 10px;
+}
+
+.postDetails {
+    background-color: white;
+    padding: 20px;
+}
+
+.postTitle {
+    font: var(--text-title);
+}
+
+.name{
+    margin: 10px 0;
+}
+
+.postContent {
+    font: var(--text-regular);
+    color: var(--dark-grey);
+}
+
+.categoryAndLikes{
+    display: flex;
+    justify-content: space-between;
+    align-items:last baseline;
+    /* border: 1px solid red; */
+}
+.category {
+    border-radius: 20px;
+    padding: 5px 15px;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font: var(--text-small);
+}
+.likeArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    /* border: 1px solid red; */
+    gap: 20px;
+}
+.selfCommentPost{
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+}
+.selfCommentPost input {
+    width: 65vw;
+    height: 45px;
+    margin-right: 45px;
+    box-sizing: border-box;
+    background-color: var(--background);
+    border: 0;
+    border-radius: 10px;
+    color: var(--light-brown);
+    font: var(--text-small);
+    padding-left: 15px;
+    font-size: 14px;
+}
+.selfCommentPost input::placeholder{
+    color: var(--light-brown);
+}
+
+.selfCommentPost button {
+    width: 140px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 18px;
+}
+
+.selfCommentPost button:active {
+    background-color: #2f200a;
+}
+
+.postComment{
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+.commenterID{
+    flex-basis: 20%;
+    font: var(--text-regular);
+}
+.commentContent{
+    padding: 10px;
+    flex-basis: 80%;
+    background-color: var(--background);
+    font: var(--text-small);
+    color: var(--light-brown);
+}

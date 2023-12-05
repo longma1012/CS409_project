@@ -1,17 +1,17 @@
 import React from "react";
-import "./Categories.css";
+import styles from "./Categories.module.css";
 
 const Categories = () => {
     return (
-        <div className="categories-container">
-            <div className="all">All</div>
-            <div className="category">Alumni Events</div>
-            <div className=" category">Lifestyle & Hobbies</div>
-            <div className="category">Job & Career</div>
-            <div className="category">Food & Drink</div>
-            <div className="category">Academic Discussions</div>
-            <div className="category">Food & Drink</div>
-            <div className="category">Emotional Life</div>
+        <div className={styles.categoriesContainer}>
+            <div className={styles.all}>All</div>
+            <div className={styles.category}>Alumni Events</div>
+            <div className={styles.category}>Lifestyle & Hobbies</div>
+            <div className={styles.category}>Job & Career</div>
+            <div className={styles.category}>Food & Drink</div>
+            <div className={styles.category}>Academic Discussions</div>
+            <div className={styles.category}>Food & Drink</div>
+            <div className={styles.category}>Emotional Life</div>
         </div>
     );
 };

@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   
 }
 
@@ -35,6 +36,7 @@
 }
 
 .loginFormContainer {
+  width: 540px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,7 +46,7 @@
   /* border: 1px solid red; */
 }
 
-.login-input-section {
+.login_input_section {
   width: 525px;
   height: 78px;
   margin-bottom: 14px;
@@ -58,12 +60,13 @@
   word-wrap: break-word;
 }
 
-.login-input-section::placeholder {
+.login_input_section::placeholder {
   color: var(--inner-text-grey);
 }
 
 .signupIfNoAccount {
-  margin-left: 250px;
+  /* margin-left: 250px; */
+  align-self: flex-end;
   color: var(--inner-text-grey);
   text-align: center;
   font-family: Lexend;
@@ -71,6 +74,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  display: flex;
+  /* border: 1px solid red; */
+  white-space: nowrap;
 }
 
 .signUplink:visited {
@@ -86,7 +92,7 @@
   color: #7f1f1f;
 }
 
-.login-error{
+.login_error{
   /* align-self: center; */
   margin: 0;
   padding: 0;
@@ -96,15 +102,15 @@
   font-size: 14px;
 }
 
-.login-error p {
+.login_error p {
   margin: 0;
 }
 
-.login-enterButton{
+.login_enterButton{
   align-self: center;
 }
 
-.login-enterButton button {
+.login_enterButton button {
   width: 240px;
   height: 60px;
   margin-top: 5px;
@@ -120,6 +126,6 @@
   line-height: normal;
 }
 
-.login-enterButton button:active {
+.login_enterButton button:active {
   background-color: #2f200a;
 }
