@@ -3,9 +3,11 @@ import styles from "./SignUpPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { writeUserData } from "../../dbUtils/writeUser";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [signUpError, setSignUpError] = useState(null);
@@ -25,6 +27,8 @@ const SignUpPage = () => {
                     email,
                     password
                 );
+                const userId = userCredential.user.uid;
+                writeUserData(userId, username, email, password);
                 console.log(userCredential);
                 navigate("/main");
             } catch (error) {
@@ -52,7 +56,13 @@ const SignUpPage = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-
+                    <input
+                        type="text"
+                        className={styles.signupInputSection}
+                        placeholder="Create a username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
                     <input
                         type="password"
                         className={styles.signupInputSection}
