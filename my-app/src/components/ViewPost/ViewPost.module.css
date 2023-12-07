@@ -3,6 +3,19 @@
 body {
     font: var(--text-regular);
 }
+.backBtn{
+    width: 140px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font-family: Lexend;
+    font-size: 18px;
+}
+.backBtn:active {
+    background-color: #2f200a;
+}
 
 .viewPostContainer {
     display: flex;

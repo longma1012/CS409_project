@@ -5,13 +5,18 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Header from "../Header/Header.jsx";
 import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation   } from "react-router-dom";
 import { readPostData } from "../../dbUtils/CRUDPost.js";
 
 const ViewPost = () => {
   const [currentUserEmail, setCurrentUserEmail] = useState("");
   const [post, setPost] = useState("");
   const { postId } = useParams();
+
+  const location = useLocation();
+  const handleGoBack = () => {
+    window.history.back(); 
+  };
 
   useEffect(() => {
     // Fetch post data when postId changes
@@ -39,6 +44,9 @@ const ViewPost = () => {
     <>
       <Header />
       <div className={styles.viewPostContainer}>
+        <div className={styles.backBtnContainer}>
+          <button className={styles.backBtn} onClick={handleGoBack} >Back</button>
+        </div>
         <div className={styles.postDetails}>
           <div className={styles.postTitle}> {post.Title} </div>
           <div className={styles.name}> {post.UserEmail} </div>
