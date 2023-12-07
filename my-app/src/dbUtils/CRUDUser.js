@@ -37,12 +37,17 @@ export const deleteUser = (userId) => {
 
 // 检查username是否存在
 export const checkUsernameExists = async (username) => {
-    const db = getDatabase();
-    const userRef = ref(db, `users/${username}`);
-    try {
-        await set(userRef, { exists: true }); 
-        return false;
-    } catch (error) {
-        return true; 
-    }
+    return new Promise((resolve, reject) => {
+        const db = getDatabase();
+        const usersRef = ref(db, 'users');
+
+        onValue(usersRef, (snapshot) => {
+            const users = snapshot.val();
+            const usernames = Object.values(users).map(user => user.username);
+            const usernameExists = usernames.includes(username);
+            resolve(usernameExists);
+        }, {
+            onlyOnce: true
+        });
+    });
 };

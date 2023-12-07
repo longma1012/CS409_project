@@ -3,7 +3,7 @@ import styles from "./SignUpPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { writeUserData , checkUsernameExists} from "../../dbUtils/CRUDUser";
+import { writeUserData, checkUsernameExists } from "../../dbUtils/CRUDUser";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState("");
@@ -16,25 +16,28 @@ const SignUpPage = () => {
     const signUp = async (e) => {
         e.preventDefault();
         let usernameExists;
-    
+
         try {
             const usernameExists = await checkUsernameExists(username);
-            
             if (usernameExists) {
-                setSignUpError("Username already exists. Please change to a new one");
+                setSignUpError(
+                    "Username already exists. Please change to a new one"
+                );
                 return;
             }
         } catch (error) {
             console.error(error);
             setSignUpError("Error checking username");
         }
-    
+
         if (!email.endsWith("@illinois.edu")) {
             setSignUpError("Not a UIUC email");
         } else if (password !== confirmPassword) {
             setSignUpError("Passwords do not match");
         } else if (usernameExists) {
-            setSignUpError("Username already exists. Please change to a new one");
+            setSignUpError(
+                "Username already exists. Please change to a new one"
+            );
         } else {
             try {
                 const userCredential = await createUserWithEmailAndPassword(
@@ -51,7 +54,9 @@ const SignUpPage = () => {
                     setSignUpError("Email already exists, please go to login.");
                 } else {
                     console.log(error);
-                    setSignUpError("Invalid email or password. Please try again.");
+                    setSignUpError(
+                        "Invalid email or password. Please try again."
+                    );
                 }
             }
         }
