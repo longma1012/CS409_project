@@ -34,3 +34,15 @@ export const deleteUser = (userId) => {
     const db = getDatabase();
     remove(ref(db, `users/${userId}`));
 };
+
+// 检查username是否存在
+export const checkUsernameExists = async (username) => {
+    const db = getDatabase();
+    const userRef = ref(db, `users/${username}`);
+    try {
+        await set(userRef, { exists: true }); 
+        return false;
+    } catch (error) {
+        return true; 
+    }
+};
