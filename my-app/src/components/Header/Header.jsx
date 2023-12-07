@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import styles from "./Header.module.css";
+import { readUserData } from "../../dbUtils/CRUDUser";
 
 import Logo from "../../images/ProjectLogo.png";
 import searchIcon from "../../images/SearchIcon.png";
@@ -10,6 +11,7 @@ import searchIcon from "../../images/SearchIcon.png";
 
 const Header = () => {
     const [currentUserEmail, setCurrentUserEmail] = useState("");
+    const [username, setUsername] = useState("");
 
     const logout = async () => {
         try {
@@ -20,15 +22,26 @@ const Header = () => {
     };
 
     useEffect(() => {
+        let userId = "";
+
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                const atIndex = user.email.indexOf('@');
-                const name = atIndex !== -1 ? user.email.slice(0, atIndex) : user.email;
-                setCurrentUserEmail(name);
-              } else {
-                setCurrentUserEmail("");
-              }
+                readUserData(user.uid, (userData) => {
+                    if (userData) {
+                        setUsername(userData.username);
+                    } else {
+                        console.log("User data not found");
+                    }
+                });
+
+            //     const atIndex = user.email.indexOf("@");
+            //     const name =
+            //         atIndex !== -1 ? user.email.slice(0, atIndex) : user.email;
+            //     setCurrentUserEmail(name);
+            } else {
+                setUsername("");
+            }
         });
         return () => unsubscribe();
     }, []);
@@ -57,7 +70,7 @@ const Header = () => {
                 {/* <div className={styles.photoContainer}>
                 <img src={tempPhoto} alt="" className={styles.photo} />
             </div> */}
-                <p className={styles.username}>{currentUserEmail}</p>
+                <p className={styles.username}>{username}</p>
                 <Link to="/">
                     <button onClick={logout} className={styles.logoutBtn}>
                         Logout

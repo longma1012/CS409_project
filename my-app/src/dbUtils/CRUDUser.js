@@ -1,4 +1,11 @@
-import { getDatabase, ref, set, update, remove, onValue } from "firebase/database";
+import {
+    getDatabase,
+    ref,
+    set,
+    update,
+    remove,
+    onValue,
+} from "firebase/database";
 
 // 写入 User 数据
 export const writeUserData = (userId, name, email, password) => {
@@ -6,7 +13,7 @@ export const writeUserData = (userId, name, email, password) => {
     set(ref(db, `users/${userId}`), {
         username: name,
         email: email,
-        password: password
+        password: password,
     });
 };
 
@@ -14,13 +21,17 @@ export const writeUserData = (userId, name, email, password) => {
 export const readUserData = (userId, callback) => {
     const db = getDatabase();
     const userRef = ref(db, `users/${userId}`);
-    
-    onValue(userRef, (snapshot) => {
-        const data = snapshot.val();
-        callback(data);
-    }, {
-        onlyOnce: true
-    });
+
+    onValue(
+        userRef,
+        (snapshot) => {
+            const data = snapshot.val();
+            callback(data);
+        },
+        {
+            onlyOnce: true,
+        }
+    );
 };
 
 // 更新 User 数据
@@ -36,18 +47,28 @@ export const deleteUser = (userId) => {
 };
 
 // 检查username是否存在
-export const checkUsernameExists = async (username) => {
+export const checkUsernameExists = (username) => {
     return new Promise((resolve, reject) => {
         const db = getDatabase();
-        const usersRef = ref(db, 'users');
+        const usersRef = ref(db, "users");
 
-        onValue(usersRef, (snapshot) => {
-            const users = snapshot.val();
-            const usernames = Object.values(users).map(user => user.username);
-            const usernameExists = usernames.includes(username);
-            resolve(usernameExists);
-        }, {
-            onlyOnce: true
-        });
+        onValue(
+            usersRef,
+            (snapshot) => {
+                if (snapshot && snapshot.exists()) {
+                    const users = snapshot.val();
+                    const usernames = Object.values(users).map(
+                        (user) => user.username
+                    );
+                    const usernameExists = usernames.includes(username);
+                    resolve(usernameExists);
+                } else {
+                    resolve(false);
+                }
+            },
+            {
+                onlyOnce: true,
+            }
+        );
     });
 };
