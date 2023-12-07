@@ -3,7 +3,7 @@ import styles from "./SignUpPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { writeUserData } from "../../dbUtils/writeUser";
+import { writeUserData } from "../../dbUtils/CRUDUser";
 
 const SignUpPage = () => {
     const [email, setEmail] = useState("");
