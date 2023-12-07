@@ -17,7 +17,8 @@ function App() {
           <Route path="/main" element={<MainPage />} />
           <Route path="/searched" element={<AfterSearch />} />
           <Route path="/createpost" element={<SelfPost />} />
-          <Route path="/details/postid" element={<ViewPost />} />
+          {/* <Route path="/details/postid" element={<ViewPost />} /> */}
+          <Route path="/details/:postId" element={<ViewPost />} />
         </Routes>
       </div>
     </Router>
