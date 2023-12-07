@@ -3,59 +3,58 @@ import Header from "../Header/Header.jsx";
 import Categories from "./Categories.jsx";
 import PostCard from "./PostCard.jsx";
 import { Link } from "react-router-dom";
+import { readAllPostIdData } from "../../dbUtils/CRUDPost.js";
 
 import styles from "./MainPage.module.css";
 
 import tempPhoto from "../../images/Memoji Boys 2-1.png";
+import { useState, useEffect } from "react";
 
 const MainPage = () => {
-    // const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //         try {
-    //             const response = await axios.get("/api/posts"); // 替换为你的后端 API 路径
-    //             setPosts(response.data.data); // data 是后端返回的帖子数据数组
-    //         } catch (error) {
-    //             console.error("Error fetching posts:", error);
-    //         }
-    //     };
+  useEffect(() => {
+    // Fetch posts from the database and store them in state
+    const unsubscribe = readAllPostIdData((data) => {
+      setPosts(Object.values(data)); // Convert object of posts to array
+    });
 
-    //     fetchPosts();
-    // }, []);
+    // // Cleanup subscription on unmount
+    // return () => unsubscribe();
+  }, []);
 
-    return (
-        <div>
-            <Header />
-            <Categories />
-            <div className={styles.main_area}>
-                <div className={styles.CreatePost}>
-                    <div className={styles.create_post_input}>
-                        <input
-                            type="text"
-                            placeholder="Let's share what's going on your mind..."
-                        />
-                    </div>
-                    <Link
-                        to="/createpost"
-                        className={styles.create_post_button}
-                    >
-                        <div>
-                            <button>Create Post</button>
-                        </div>
-                    </Link>
-                </div>
-                <div className={styles.post_card_container}>
-                    <Link className={styles.postLink} to="/details/postid">
-                        <PostCard />
-                    </Link>
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
-                </div>
+  return (
+    <div>
+      <Header />
+      <Categories />
+      <div className={styles.main_area}>
+        <div className={styles.CreatePost}>
+          <div className={styles.create_post_input}>
+            <input
+              type="text"
+              placeholder="Let's share what's going on your mind..."
+            />
+          </div>
+          <Link to="/createpost" className={styles.create_post_button}>
+            <div>
+              <button>Create Post</button>
             </div>
+          </Link>
         </div>
-    );
+        <div className={styles.post_card_container}>
+          {posts.map((post, index) => (
+            <Link
+              key={index}
+              className={styles.postLink}
+              to={`/details/${post.id}`}
+            >
+              <PostCard post={post} />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default MainPage;
