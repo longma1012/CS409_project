@@ -11,59 +11,57 @@ import tempPhoto from "../../images/Memoji Boys 2-1.png";
 import { useState, useEffect } from "react";
 
 const MainPage = () => {
-    const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const genres_type = [
+    "All",
+    "Alumni Events",
+    "Lifestyle & Hobbies",
+    "Job & Career",
+    "Food & Drink",
+    "Academic Discussions",
+    "Food & Drink",
+    "Emotional Life",
+  ];
 
-    //   useEffect(() => {
-    //     // Fetch posts from the database and store them in state
-    //     const unsubscribe = readAllPostIdData((data) => {
-    //       setPosts(Object.values(data)); // Convert object of posts to array
-    //     });
+  useEffect(() => {
+    readAllPostData((allPosts) => {
+      setPosts(allPosts);
+    });
+  }, []);
 
-    //     // // Cleanup subscription on unmount
-    //     // return () => unsubscribe();
-    //   }, []);
-    useEffect(() => {
-        readAllPostData((allPosts) => {
-            setPosts(allPosts);
-        });
-    }, []);
-
-    return (
-        <div>
-            <Header />
-            <Categories />
-            <div className={styles.main_area}>
-                <div className={styles.CreatePost}>
-                    <div className={styles.create_post_input}>
-                        <input
-                            type="text"
-                            placeholder="Let's share what's going on your mind..."
-                        />
-                    </div>
-                    <Link
-                        to="/createpost"
-                        className={styles.create_post_button}
-                    >
-                        <div>
-                            <button>Create Post</button>
-                        </div>
-                    </Link>
-                </div>
-
-                <div className={styles.post_card_container}>
-                    {posts.map((post, index) => (
-                        <Link
-                            key={index}
-                            className={styles.postLink}
-                            to={`/details/${post.id}`}
-                        >
-                            <PostCard post={post} />
-                        </Link>
-                    ))}
-                </div>
+  return (
+    <div>
+      <Header />
+      <Categories />
+      <div className={styles.main_area}>
+        <div className={styles.CreatePost}>
+          <div className={styles.create_post_input}>
+            <input
+              type="text"
+              placeholder="Let's share what's going on your mind..."
+            />
+          </div>
+          <Link to="/createpost" className={styles.create_post_button}>
+            <div>
+              <button>Create Post</button>
             </div>
+          </Link>
         </div>
-    );
+
+        <div className={styles.post_card_container}>
+          {posts.map((post, index) => (
+            <Link
+              key={index}
+              className={styles.postLink}
+              to={`/details/${post.id}`}
+            >
+              <PostCard post={post} />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default MainPage;
