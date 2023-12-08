@@ -16,6 +16,7 @@ const ViewPost = () => {
   const [post, setPost] = useState("");
   const { postId } = useParams();
 
+  // handle go back Btn
   const location = useLocation();
   const handleGoBack = () => {
     window.history.back();

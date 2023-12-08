@@ -6,6 +6,26 @@
     /* justify-content: center; */
     flex-flow: column;
     align-items: center;
+    /* border: 1px solid red; */
+    gap: 10px;
+}
+.backBtnContainer {
+    width: 80vw;
+    display: flex;
+}
+.backBtn {
+    width: 140px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: var(--dark-brown);
+    color: var(--background);
+    text-align: center;
+    font: var(--text-regular);
+    /* margin-bottom: 10px; */
+    align-self: first baseline;
+}
+.backBtn:active {
+    background-color: #2f200a;
 }
 
 .selfPostTitle {
@@ -38,7 +58,7 @@
 }
 
 .categoryChoose {
-    margin: 20px 0;
+    /* margin: 20px 0; */
     width: 80vw;
     /* border: 1px solid red; */
 }
@@ -54,6 +74,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.categoryChooseSelect {
+    width: fit-content;
+    padding: 2px 5px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: var(--dark-brown);
+    font: var(--text-regular);
+    color: var(--background);
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    text-align-last: center; /* 适用于部分浏览器 */
+    text-align: -moz-center;
 }
 
 .contentContainer {
@@ -101,7 +136,7 @@
     border-radius: 15px;
     background-color: var(--dark-brown);
     color: var(--background);
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
