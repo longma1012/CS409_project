@@ -82,29 +82,7 @@ export const deletePost = (postId) => {
   remove(ref(db, `posts/${postId}`));
 };
 
-// // Read all Post data
-// export const readAllPostData = (callback) => {
-//     const db = getDatabase();
-//     const postsRef = ref(db, "posts");
-
-//     onValue(postsRef, (snapshot) => {
-//         const data = snapshot.val();
-//         callback(data);
-//     });
-// };
-
-// //Read all Post id
-// export const readAllPostIdData = (callback) => {
-//     const db = getDatabase();
-//     const postsRef = ref(db, "posts");
-
-//     onValue(postsRef, (snapshot) => {
-//         const data = snapshot.val();
-//         const postIds = data ? Object.keys(data) : []; // Get all post IDs
-//         callback(postIds); // Return the post IDs
-//     });
-// };
-
+// 读取所有的 Post
 export const readAllPostData = (callback) => {
   const db = getDatabase();
   const postsRef = ref(db, "posts");

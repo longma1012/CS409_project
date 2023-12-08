@@ -10,7 +10,7 @@ const Categories = () => {
             <div className={styles.category}>Job & Career</div>
             <div className={styles.category}>Food & Drink</div>
             <div className={styles.category}>Academic Discussions</div>
-            <div className={styles.category}>Food & Drink</div>
+            <div className={styles.category}>Housing</div>
             <div className={styles.category}>Emotional Life</div>
         </div>
     );
