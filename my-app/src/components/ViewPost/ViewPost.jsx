@@ -6,7 +6,12 @@ import Header from "../Header/Header.jsx";
 import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
 import { useParams, useLocation } from "react-router-dom";
-import { readPostData, updatePost } from "../../dbUtils/CRUDPost.js";
+import {
+  readPostData,
+  updatePost,
+  readLikesCountCallBack,
+  readLikesCount,
+} from "../../dbUtils/CRUDPost.js";
 import { readUsername } from "../../dbUtils/CRUDUser";
 import {
   writeCommentData,
@@ -16,6 +21,8 @@ import { v4 as uuidv4 } from "uuid";
 
 const ViewPost = () => {
   const [postUsername, setPostUsername] = useState("");
+  const [likes, setLikes] = useState(0);
+  const [userLiked, setUserLiked] = useState(false);
   const [myUsername, setMyUsername] = useState("");
   const [comments, setComments] = useState([]); // Add this state to hold comment data
   const [comment, setComment] = useState("");
@@ -24,6 +31,7 @@ const ViewPost = () => {
 
   // handle go back Btn
   const location = useLocation();
+
   const handleGoBack = () => {
     window.history.back();
   };
@@ -37,6 +45,54 @@ const ViewPost = () => {
     } else {
       console.log("Username or post information is not available.");
     }
+  };
+
+  // const handleLike = () => {
+  //   const dblikes = post.Likes;
+  //   let updatedLikes;
+
+  //   updatedLikes = dblikes + 1;
+
+  //   // Update likes in the component state
+  //   setLikes(updatedLikes);
+
+  //   // Update the like count in the database
+  //   updatePost(postId, { Likes: updatedLikes });
+
+  //   // Toggle the state of whether the user has liked the post
+  //   // setUserLiked(!userLiked);
+
+  //   // For debugging
+  //   console.log("Updated likes number is " + updatedLikes);
+  // };
+
+  // useEffect(() => {
+  //   // Start listening to the likes count
+  //   const likesNumber = readLikesCount(postId);
+  //   setLikes(likesNumber);
+
+  //   // Cleanup function to stop listening when the component unmounts
+  //   // return () => unsubscribe();
+  // }, [likesNumber]);
+
+  useEffect(() => {
+    // Start listening to the likes count
+    const unsubscribe = readLikesCountCallBack(postId, (newLikes) => {
+      setLikes(newLikes);
+    });
+    // Cleanup function to stop listening when the component unmounts
+    return () => unsubscribe();
+  }, [postId]);
+
+  const handleLike = () => {
+    // Calculate updatedLikes
+    const updatedLikes = likes + 1;
+
+    // Update the like count in the database
+    updatePost(postId, { Likes: updatedLikes });
+
+    // No need to setLikes here since the listener will update it
+    console.log("Updated likes number is " + updatedLikes);
   };
 
   const submitComment = () => {
@@ -113,10 +169,17 @@ const ViewPost = () => {
   }, [postId]); // This effect runs when postId changes
 
   useEffect(() => {
+    let unsubscribeFromLikes;
     // Fetch post data when postId changes
     if (postId) {
       readPostData(postId, (postData) => {
         setPost(postData);
+        // setLikes(postData.Likes);
+
+        if (postData) {
+          setLikes(postData.Likes || 0); // 使用 postData 初始化 likes
+        }
+
         if (postData.CommentList) {
           // For each comment ID in the CommentList, fetch the comment data
           const commentPromises = postData.CommentList.map(
@@ -133,6 +196,12 @@ const ViewPost = () => {
         }
       });
     }
+    // Cleanup function to unsubscribe from likes listener
+    // return () => {
+    //   if (unsubscribeFromLikes) {
+    //     unsubscribeFromLikes();
+    //   }
+    // };
   }, [postId]);
 
   // calculate time
@@ -184,9 +253,11 @@ const ViewPost = () => {
             <div className={styles.category}>{post.Category}</div>
             <div className={styles.likeArea}>
               <div className={styles.likeBtn}>
-                <img src={LikeIcon} alt="" />
+                <button onClick={handleLike} className={styles.likeButton}>
+                  <img src={LikeIcon} alt="Like" />
+                </button>
               </div>
-              <div className={styles.likes}>{post.Likes}</div>
+              <div className={styles.likes}>{likes}</div>
             </div>
           </div>
         </div>
