@@ -6,6 +6,8 @@ import tempPhoto from "../../images/Memoji Boys 2-1.png";
 
 const PostCard = ({post}) => {
   console.log(post);
+  const commentCount = post.CommentList ? Object.keys(post.CommentList).length : 0;
+
   return (
     <div className={styles.post_card}>
       <div className={styles.content_area}>
@@ -23,8 +25,8 @@ const PostCard = ({post}) => {
       <div className={styles.info_area}>
         <div className={styles.category_tag}>{post.Category}</div>
         <div className={styles.data}>
-          <p className={styles.comments}>56 Comments</p>
-          <p className={styles.likes}>{post.Likes}</p>
+          <p className={styles.comments}>Comments: {commentCount}</p>
+          <p className={styles.likes}>Likes: {post.Likes}</p>
         </div>
       </div>
     </div>
