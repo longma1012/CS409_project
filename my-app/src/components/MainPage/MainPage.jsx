@@ -49,7 +49,7 @@ const MainPage = () => {
     return (
         <div>
             <Header />
-            <Categories onSelectCategory={handleSelectCategory} />
+            <Categories onSelectCategory={handleSelectCategory} chosenCategory={chosenCategory}  />
             <div className={styles.main_area}>
                 <div className={styles.CreatePost}>
                     <div className={styles.create_post_input}>
