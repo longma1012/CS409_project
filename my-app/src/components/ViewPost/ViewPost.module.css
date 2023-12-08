@@ -123,6 +123,13 @@ body {
   flex-basis: 20%;
   font: var(--text-regular);
 }
+
+.commentTime {
+  font: var(--text-small);
+  color: var(--inner-text-grey);
+  margin: 0;
+}
+
 .commentContent {
   padding: 10px;
   flex-basis: 80%;

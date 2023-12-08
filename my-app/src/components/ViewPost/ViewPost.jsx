@@ -205,6 +205,9 @@ const ViewPost = () => {
               <div className={styles.commenterID}>
                 {singlecomment.CommentUserName}
               </div>
+              <div className={styles.commentTime}>
+                {getTimeDifference(singlecomment.CreateTime)}
+              </div>
               <div className={styles.commentContent}>
                 {singlecomment.Content}
               </div>
