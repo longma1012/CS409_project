@@ -10,7 +10,7 @@ import searchIcon from "../../images/SearchIcon.png";
 // import tempPhoto from "../../images/Memoji Boys 2-1.png";
 
 const Header = () => {
-    const [currentUserEmail, setCurrentUserEmail] = useState("");
+    // const [currentUserEmail, setCurrentUserEmail] = useState("");
     const [username, setUsername] = useState("");
 
     const logout = async () => {

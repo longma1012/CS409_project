@@ -1,16 +1,14 @@
 @import "../../variables.css";
 
 .selfPostContainer {
-    margin-top: 60px;
+    padding: 5vh 10vw 5vh 10vw;
     display: flex;
-    /* justify-content: center; */
     flex-flow: column;
-    align-items: center;
+    /* align-items: center; */
     /* border: 1px solid red; */
     gap: 10px;
 }
 .backBtnContainer {
-    width: 80vw;
     display: flex;
 }
 .backBtn {
@@ -29,7 +27,7 @@
 }
 
 .selfPostTitle {
-    width: 80vw;
+    /* width: 80vw; */
     padding: 16px 0;
     background-color: #ffffff;
     display: flex;
@@ -41,7 +39,7 @@
     font: var(--text-title);
 }
 .selfPostTitleInput input {
-    width: 65vw;
+    width: 62vw;
     height: 45px;
     margin-right: 45px;
     box-sizing: border-box;
@@ -55,12 +53,6 @@
 }
 .selfPostTitleInput input::placeholder {
     color: var(--inner-text-grey);
-}
-
-.categoryChoose {
-    /* margin: 20px 0; */
-    width: 80vw;
-    /* border: 1px solid red; */
 }
 
 .categoryChooseBtn {
@@ -92,8 +84,7 @@
 }
 
 .contentContainer {
-    width: 80vw;
-    padding: 30px 0;
+    padding: 20px 0;
     background-color: #ffffff;
     display: flex;
     justify-content: space-between;
@@ -105,7 +96,7 @@
     font: var(--text-title);
 }
 .selfPostContentInput textarea {
-    width: 65vw;
+    width: 62vw;
     height: 400px;
     margin-right: 45px;
     padding: 10px;
@@ -122,9 +113,19 @@
     color: var(--inner-text-grey);
 }
 
+.postError {
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+    color: red;
+    font: var(--text-regular);
+    align-self: center;
+}
+.postError p {
+    margin: 0;
+}
+
 .selfPostCreate {
-    margin: 20px 0;
-    width: 80vw;
     /* border: 1px solid red; */
     display: flex;
     justify-content: flex-end;

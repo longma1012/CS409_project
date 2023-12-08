@@ -72,3 +72,26 @@ export const checkUsernameExists = (username) => {
         );
     });
 };
+
+// 根据 id 返回 username
+export const readUsename = (userId) => {
+    const db = getDatabase();
+    const userRef = ref(db, `users/${userId}`);
+
+    return new Promise((resolve, reject) => {
+        onValue(
+            userRef,
+            (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    resolve(data.username);
+                } else {
+                    resolve(null);
+                }
+            },
+            {
+                onlyOnce: true,
+            }
+        );
+    });
+};
