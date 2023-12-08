@@ -6,7 +6,7 @@ import { readUsename } from "../../dbUtils/CRUDUser";
 import tempPhoto from "../../images/Memoji Boys 2-1.png";
 
 const PostCard = ({ post }) => {
-  console.log(post);
+  // console.log(post);
   // count comment numbers
   const commentCount = post.CommentList
     ? Object.keys(post.CommentList).length
@@ -17,7 +17,7 @@ const PostCard = ({ post }) => {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        console.log(post.userId);
+        // console.log(post.userId);
         const fetchedUsername = await readUsename(post.userId);
         setUsername(fetchedUsername || "Unknown User");
       } catch (error) {

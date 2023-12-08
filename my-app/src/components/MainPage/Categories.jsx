@@ -1,18 +1,30 @@
 import React from "react";
 import styles from "./Categories.module.css";
 
-const Categories = () => {
+const Categories = ({ onSelectCategory }) => {
+    const categories = [
+        'All',
+        'Alumni Events',
+        'Lifestyle & Hobbies',
+        'Job & Career',
+        'Food & Drink',
+        'Academic Discussions',
+        'Housing',
+        'Emotional Life',
+      ];
+
     return (
         <div className={styles.categoriesContainer}>
-            <div className={styles.all}>All</div>
-            <div className={styles.category}>Alumni Events</div>
-            <div className={styles.category}>Lifestyle & Hobbies</div>
-            <div className={styles.category}>Job & Career</div>
-            <div className={styles.category}>Food & Drink</div>
-            <div className={styles.category}>Academic Discussions</div>
-            <div className={styles.category}>Housing</div>
-            <div className={styles.category}>Emotional Life</div>
+      {categories.map(category => (
+        <div
+          key={category}
+          className={styles.category}
+          onClick={() => onSelectCategory(category)}
+        >
+          {category}
         </div>
+      ))}
+    </div>
     );
 };
 

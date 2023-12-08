@@ -12,32 +12,44 @@ import tempPhoto from "../../images/Memoji Boys 2-1.png";
 const MainPage = () => {
     const [posts, setPosts] = useState([]);
     const [inputPostValue, setInputPostValue] = useState("");
+    const [chosenCategory, setChosenCategory] = useState("All");
+    const [filteredPosts, setFilteredPosts] = useState([]);
 
     const handleInputPostChange = (event) => {
         setInputPostValue(event.target.value);
     };
 
-    const genres_type = [
-        "All",
-        "Alumni Events",
-        "Lifestyle & Hobbies",
-        "Job & Career",
-        "Food & Drink",
-        "Academic Discussions",
-        "Emotional Life",
-        "Housing",
-    ];
+    // useEffect(() => {
+    //     readAllPostData((allPosts) => {
+    //         setPosts(allPosts);
+    //     });
+    // }, []);
 
+    // Filter functions
+    const handleSelectCategory = (category) => {
+        setChosenCategory(category);
+    };
     useEffect(() => {
         readAllPostData((allPosts) => {
-            setPosts(allPosts);
+            // setPosts(allPosts);
+            console.log(chosenCategory);
+            if (chosenCategory === "All") {
+                // console.log(allPosts)
+                setFilteredPosts(allPosts);
+            } else {
+                const filtered = allPosts.filter(
+                    (post) => post.Category === chosenCategory
+                );
+                console.log(filtered)
+                setFilteredPosts(filtered);
+            }
         });
-    }, []);
+    }, [chosenCategory]);
 
     return (
         <div>
             <Header />
-            <Categories />
+            <Categories onSelectCategory={handleSelectCategory} />
             <div className={styles.main_area}>
                 <div className={styles.CreatePost}>
                     <div className={styles.create_post_input}>
@@ -59,7 +71,7 @@ const MainPage = () => {
                 </div>
 
                 <div className={styles.post_card_container}>
-                    {posts.map((post, index) => (
+                    {filteredPosts.map((post, index) => (
                         <Link
                             key={index}
                             className={styles.postLink}
