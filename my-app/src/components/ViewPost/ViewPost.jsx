@@ -7,6 +7,7 @@ import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
 import { useParams, useLocation } from "react-router-dom";
 import { readPostData, updatePost } from "../../dbUtils/CRUDPost.js";
+import { readUsename } from "../../dbUtils/CRUDUser";
 import {
   writeCommentData,
   readCommentData,
@@ -15,6 +16,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const ViewPost = () => {
   const [currentUserEmail, setCurrentUserEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [comments, setComments] = useState([]); // Add this state to hold comment data
   //   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
@@ -55,6 +57,21 @@ const ViewPost = () => {
     // Clear the comment input after submitting
     setComment("");
   };
+
+  // get poster name
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        console.log(post.userId);
+        const fetchedUsername = await readUsename(post.userId);
+        setUsername(fetchedUsername || "Unknown User");
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    };
+
+    fetchUsername();
+  }, [post.userId]);
 
   useEffect(() => {
     // Fetch post data when postId changes
@@ -137,7 +154,7 @@ const ViewPost = () => {
           {comments.map((singlecomment) => (
             <div key={singlecomment.id} className={styles.postComment}>
               <div className={styles.commenterID}>
-                {singlecomment.CommentUserEmail}
+                {/* {singlecomment.CommentUserEmail} */}
               </div>
               <div className={styles.commentContent}>
                 {singlecomment.Content}
