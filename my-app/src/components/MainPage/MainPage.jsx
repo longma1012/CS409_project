@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import Header from "../Header/Header.jsx";
 import Categories from "./Categories.jsx";
 import PostCard from "./PostCard.jsx";
@@ -8,7 +8,6 @@ import { readAllPostData } from "../../dbUtils/CRUDPost.js";
 import styles from "./MainPage.module.css";
 
 import tempPhoto from "../../images/Memoji Boys 2-1.png";
-import { useState, useEffect } from "react";
 
 const MainPage = () => {
   const [posts, setPosts] = useState([]);

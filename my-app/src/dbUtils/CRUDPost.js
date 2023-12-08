@@ -57,6 +57,7 @@ export const deletePost = (postId) => {
     remove(ref(db, `posts/${postId}`));
 };
 
+// 读取所有的 Post
 export const readAllPostData = (callback) => {
     const db = getDatabase();
     const postsRef = ref(db, "posts");
