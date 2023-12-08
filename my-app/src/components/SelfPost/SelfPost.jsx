@@ -69,12 +69,13 @@ const SelfPost = () => {
                         onChange={(e) => setCategory(e.target.value)}
                     >
                         <option value="">Select a category</option>
-                        <option value="News">News</option>
-                        <option value="Opinion">Opinion</option>
-                        <option value="Lifestyle">Lifestyle</option>
-                        <option value="Tech">Tech</option>
-                        <option value="Sports">Sports</option>
-                        {/* 可以根据需要添加更多类别 */}
+                        <option value="Alumni Events">Alumni Events</option>
+                        <option value="Lifestyle & Hobbies">Lifestyle & Hobbies</option>
+                        <option value="Job & Career">Job & Career</option>
+                        <option value="Food & Drink">Food & Drink</option>
+                        <option value="Academic Discussions">Academic Discussions</option>
+                        <option value="Emotional Life">Emotional Life</option>
+                        <option value="Housing">Housing</option>
                     </select>
                 </div>
                 <div className={styles.contentContainer}>

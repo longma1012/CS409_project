@@ -18,8 +18,8 @@ const MainPage = () => {
     "Job & Career",
     "Food & Drink",
     "Academic Discussions",
-    "Food & Drink",
     "Emotional Life",
+    "Housing"
   ];
 
   useEffect(() => {
