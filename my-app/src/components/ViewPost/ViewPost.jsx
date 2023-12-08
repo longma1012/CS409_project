@@ -47,34 +47,6 @@ const ViewPost = () => {
     }
   };
 
-  // const handleLike = () => {
-  //   const dblikes = post.Likes;
-  //   let updatedLikes;
-
-  //   updatedLikes = dblikes + 1;
-
-  //   // Update likes in the component state
-  //   setLikes(updatedLikes);
-
-  //   // Update the like count in the database
-  //   updatePost(postId, { Likes: updatedLikes });
-
-  //   // Toggle the state of whether the user has liked the post
-  //   // setUserLiked(!userLiked);
-
-  //   // For debugging
-  //   console.log("Updated likes number is " + updatedLikes);
-  // };
-
-  // useEffect(() => {
-  //   // Start listening to the likes count
-  //   const likesNumber = readLikesCount(postId);
-  //   setLikes(likesNumber);
-
-  //   // Cleanup function to stop listening when the component unmounts
-  //   // return () => unsubscribe();
-  // }, [likesNumber]);
-
   useEffect(() => {
     // Start listening to the likes count
     const unsubscribe = readLikesCountCallBack(postId, (newLikes) => {
@@ -96,7 +68,7 @@ const ViewPost = () => {
   };
 
   const submitComment = () => {
-    if (myUsername == "Unknown User") {
+    if (myUsername === "Unknown User") {
       console.log("User not logged in");
       return;
     }
@@ -196,12 +168,6 @@ const ViewPost = () => {
         }
       });
     }
-    // Cleanup function to unsubscribe from likes listener
-    // return () => {
-    //   if (unsubscribeFromLikes) {
-    //     unsubscribeFromLikes();
-    //   }
-    // };
   }, [postId]);
 
   // calculate time
