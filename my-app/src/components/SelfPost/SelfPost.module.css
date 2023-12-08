@@ -122,6 +122,17 @@
     color: var(--inner-text-grey);
 }
 
+.postError {
+    /* border: 1px solid red; */
+    margin: 0;
+    padding: 0;
+    color: red;
+    font:var(--text-regular);
+}
+.postError p {
+    margin: 0;
+}
+
 .selfPostCreate {
     margin: 20px 0;
     width: 80vw;

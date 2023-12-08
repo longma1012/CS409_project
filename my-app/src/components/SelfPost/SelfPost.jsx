@@ -13,6 +13,7 @@ const SelfPost = () => {
     const [category, setCategory] = useState("");
     const [body, setBody] = useState("");
     const [useremail, setUsereEmail] = useState("");
+    const [postError, setPostError] = useState("");
 
     // get input title from main
     const { search } = useLocation();
@@ -32,14 +33,32 @@ const SelfPost = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
-        const postId = uuidv4();
-        const email = useremail;
-        const likes = 0;
-        const postTime = new Date().toISOString();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        try {
+            const postId = uuidv4();
+            const email = useremail;
+            const likes = 0;
+            const postTime = new Date().toISOString();
 
-        writePostData(postId, title, email, category, body, likes, postTime);
-        navigate("/main");
+            if (category == "") {
+                setPostError("Please choose a category");
+            } else {
+                writePostData(
+                    postId,
+                    title,
+                    email,
+                    category,
+                    body,
+                    likes,
+                    postTime
+                );
+                navigate("/main");
+            }
+        } catch (error) {
+            console.log(error);
+            setPostError("Create post failed, please try again.");
+        }
     };
 
     useEffect(() => {
@@ -104,6 +123,9 @@ const SelfPost = () => {
                             onChange={(e) => setBody(e.target.value)}
                         />
                     </div>
+                </div>
+                <div className={styles.postError}>
+                    {postError && <p>{postError}</p>}
                 </div>
                 <div className={styles.selfPostCreate}>
                     <div
