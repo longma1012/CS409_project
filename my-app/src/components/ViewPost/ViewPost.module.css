@@ -78,7 +78,7 @@ body {
   background-color: var(--background);
   border: 0;
   border-radius: 10px;
-  color: var(--light-brown);
+  color: var(--dark-brown);
   font: var(--text-small);
   padding-left: 15px;
   font-size: 14px;
@@ -122,6 +122,6 @@ body {
   flex-basis: 80%;
   background-color: var(--background);
   font: var(--text-small);
-  color: var(--light-brown);
+  color: var(--dark-brown);
   border-radius: 10px;
 }

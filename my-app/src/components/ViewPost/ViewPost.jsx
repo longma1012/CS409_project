@@ -18,7 +18,6 @@ const ViewPost = () => {
     const [postUsername, setPostUsername] = useState("");
     const [myUsername, setMyUsername] = useState("");
     const [comments, setComments] = useState([]); // Add this state to hold comment data
-    const [myUserId, setMyUserId] = useState("");
     const [comment, setComment] = useState("");
     const [post, setPost] = useState("");
     const { postId } = useParams();
@@ -91,7 +90,6 @@ const ViewPost = () => {
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
-                setMyUserId(user.uid);
                 try {
                     const fetchedMyUsername = await readUsername(user.uid);
                     setMyUsername(fetchedMyUsername || "Unknown User");
@@ -99,7 +97,6 @@ const ViewPost = () => {
                     console.error("Error fetching username:", error);
                 }
             } else {
-                setMyUserId("");
                 setMyUsername("Unknown User");
             }
         });
