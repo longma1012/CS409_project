@@ -7,7 +7,7 @@ import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
 import { useParams, useLocation } from "react-router-dom";
 import { readPostData, updatePost } from "../../dbUtils/CRUDPost.js";
-import { readUsename } from "../../dbUtils/CRUDUser";
+import { readUsername } from "../../dbUtils/CRUDUser";
 import {
     writeCommentData,
     readCommentData,
@@ -76,7 +76,7 @@ const ViewPost = () => {
             try {
                 // console.log(post.userId);
                 if (post.userId) {
-                    const fetchedUsername = await readUsename(post.userId);
+                    const fetchedUsername = await readUsername(post.userId);
                     setPostUsername(fetchedUsername || "Unknown User");
                 }
             } catch (error) {
@@ -93,7 +93,7 @@ const ViewPost = () => {
             if (user) {
                 setMyUserId(user.uid);
                 try {
-                    const fetchedMyUsername = await readUsename(user.uid);
+                    const fetchedMyUsername = await readUsername(user.uid);
                     setMyUsername(fetchedMyUsername || "Unknown User");
                 } catch (error) {
                     console.error("Error fetching username:", error);

@@ -74,7 +74,7 @@ export const checkUsernameExists = (username) => {
 };
 
 // 根据 id 返回 username
-export const readUsename = (userId) => {
+export const readUsername = (userId) => {
     const db = getDatabase();
     const userRef = ref(db, `users/${userId}`);
 

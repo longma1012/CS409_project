@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./PostCard.module.css";
-import { readUsename } from "../../dbUtils/CRUDUser";
+import { readUsername } from "../../dbUtils/CRUDUser";
 
 import tempPhoto from "../../images/Memoji Boys 2-1.png";
 
@@ -18,7 +18,7 @@ const PostCard = ({ post }) => {
     const fetchUsername = async () => {
       try {
         // console.log(post.userId);
-        const fetchedUsername = await readUsename(post.userId);
+        const fetchedUsername = await readUsername(post.userId);
         setUsername(fetchedUsername || "Unknown User");
       } catch (error) {
         console.error("Error fetching username:", error);
