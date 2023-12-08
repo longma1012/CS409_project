@@ -38,6 +38,12 @@ body {
   margin: 10px 0;
 }
 
+.postTime {
+  font: var(--text-small);
+  color: var(--inner-text-grey);
+  margin: 0;
+}
+
 .postContent {
   font: var(--text-regular);
   color: var(--dark-grey);
