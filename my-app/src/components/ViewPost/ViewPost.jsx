@@ -6,12 +6,17 @@ import Header from "../Header/Header.jsx";
 import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
 import { useParams, useLocation } from "react-router-dom";
-import { readPostData } from "../../dbUtils/CRUDPost.js";
+import {
+  readPostData,
+  updateCommentList,
+  updatePost,
+} from "../../dbUtils/CRUDPost.js";
 import { writeCommentData } from "../../dbUtils/CRUDComment.js";
 import { v4 as uuidv4 } from "uuid";
 
 const ViewPost = () => {
   const [currentUserEmail, setCurrentUserEmail] = useState("");
+  //   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
   const [post, setPost] = useState("");
   const { postId } = useParams();
@@ -29,8 +34,13 @@ const ViewPost = () => {
     const createTime = new Date().toISOString();
 
     writeCommentData(commentId, postId, comment, createTime, currentUserEmail);
+
+    const updatedCommentList = post.CommentList
+      ? [...post.CommentList, commentId]
+      : [commentId];
+    console.log("Commend id is " + commentId);
+    updatePost(postId, { CommentList: updatedCommentList });
     setComment(""); // Clear the comment input after submitting
-    console.log("test submit comment  " + commentId);
   };
 
   useEffect(() => {
@@ -41,7 +51,7 @@ const ViewPost = () => {
       });
     }
   }, [postId]); // This effect runs when postId changes
-  console.log("check post item: " + post.Title);
+  //   console.log("check post item: " + post.Title);
 
   useEffect(() => {
     const auth = getAuth();
