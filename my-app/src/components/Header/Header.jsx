@@ -13,6 +13,8 @@ const Header = () => {
     // const [currentUserEmail, setCurrentUserEmail] = useState("");
     const [username, setUsername] = useState("");
 
+    const [searchInput, setSearchInput] = useState(""); // 新增：用于搜索输入的状态
+
     const logout = async () => {
         try {
             await signOut(auth);
@@ -46,6 +48,11 @@ const Header = () => {
         return () => unsubscribe();
     }, []);
 
+
+    const handleSearchInputChange = (event) => {
+        setSearchInput(event.target.value); // 新增：处理搜索输入的变化
+    };
+
     // console.log(auth?.currentUser?.email);
 
     return (
@@ -58,14 +65,23 @@ const Header = () => {
                     <header className={styles.webName}>I-AlumniHub</header>
                 </div>
             </Link>
+
+
             <div className={styles.searchBar}>
-                <input type="text" placeholder="Type here to search..." />
-                <Link to="/searched">
+                <input 
+                    type="text" 
+                    placeholder="Type here to search..." 
+                    value={searchInput} 
+                    onChange={handleSearchInputChange} // 绑定搜索输入的变化处理函数
+                />
+                <Link to={`/searched?query=${searchInput}`}>
                     <div className={styles.searchIcon}>
                         <img src={searchIcon} alt="" />
                     </div>
                 </Link>
             </div>
+
+
             <div className={styles.User}>
                 {/* <div className={styles.photoContainer}>
                 <img src={tempPhoto} alt="" className={styles.photo} />
