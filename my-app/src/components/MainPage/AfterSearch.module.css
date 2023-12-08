@@ -17,55 +17,28 @@
     justify-content: space-between;
 }
 
-/* .user_photo {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    margin-left: 22px;
-    background-color: var(--light-brown);
-} */
-
-.create_post_input {
-    margin-left: 20px;
+.backBtnContainer{
+    width: 80%;
+    /* border: 1px solid red; */
 }
 
-.create_post_input input {
-    width: 60vw;
-    height: 45px;
-    box-sizing: border-box;
-    background-color: var(--input-background);
-    border: 0;
-    border-radius: 10px;
-    font: var(--text-small);
-    color: var(--inner-text-grey);
-    padding-left: 15px;
-    font-size: 14px;
-}
-.create_post_input input::placeholder {
-    color: var(--inner-text-grey);
-}
-
-.create_post_button button {
+.backBtn {
+    align-self:baseline;
     width: 140px;
     height: 45px;
-    margin-right: 30px;
     border-radius: 6px;
     background-color: var(--dark-brown);
     color: var(--background);
     text-align: center;
     font-family: Lexend;
     font-size: 18px;
-    /* font-style: normal;
-    font-weight: 500;
-    line-height: normal; */
-}
-
-.create_post_button button:active {
+  }
+  .backBtn:active {
     background-color: #2f200a;
-}
+  }
 
 .post_card_container {
-    margin-top: 35px;
+    margin-top: 10px;
     width: 80%;
     display: flex;
     flex-flow: column;

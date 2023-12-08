@@ -36,11 +36,6 @@ const Header = () => {
                         console.log("User data not found");
                     }
                 });
-
-            //     const atIndex = user.email.indexOf("@");
-            //     const name =
-            //         atIndex !== -1 ? user.email.slice(0, atIndex) : user.email;
-            //     setCurrentUserEmail(name);
             } else {
                 setUsername("");
             }
