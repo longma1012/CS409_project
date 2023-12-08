@@ -1,122 +1,127 @@
 @import "../../variables.css";
 
 body {
-    font: var(--text-regular);
+  font: var(--text-regular);
 }
-.backBtn{
-    width: 140px;
-    height: 45px;
-    border-radius: 6px;
-    background-color: var(--dark-brown);
-    color: var(--background);
-    text-align: center;
-    font-family: Lexend;
-    font-size: 18px;
+.backBtn {
+  width: 140px;
+  height: 45px;
+  border-radius: 6px;
+  background-color: var(--dark-brown);
+  color: var(--background);
+  text-align: center;
+  font-family: Lexend;
+  font-size: 18px;
 }
 .backBtn:active {
-    background-color: #2f200a;
+  background-color: #2f200a;
 }
 
 .viewPostContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 5vh 10vw 5vh 10vw;
-    /* border: 1px solid red; */
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 10vw 5vh 10vw;
+  /* border: 1px solid red; */
+  gap: 10px;
 }
 
 .postDetails {
-    background-color: white;
-    padding: 20px;
+  background-color: white;
+  padding: 20px;
 }
 
 .postTitle {
-    font: var(--text-title);
+  font: var(--text-title);
 }
 
-.name{
-    margin: 10px 0;
+.name {
+  margin: 10px 0;
 }
 
 .postContent {
-    font: var(--text-regular);
-    color: var(--dark-grey);
+  font: var(--text-regular);
+  color: var(--dark-grey);
 }
 
-.categoryAndLikes{
-    display: flex;
-    justify-content: space-between;
-    align-items:last baseline;
-    /* border: 1px solid red; */
+.categoryAndLikes {
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+  /* border: 1px solid red; */
 }
 .category {
-    border-radius: 20px;
-    padding: 5px 15px;
-    background-color: var(--dark-brown);
-    color: var(--background);
-    text-align: center;
-    font: var(--text-small);
+  border-radius: 20px;
+  padding: 5px 15px;
+  background-color: var(--dark-brown);
+  color: var(--background);
+  text-align: center;
+  font: var(--text-small);
 }
 .likeArea {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: fit-content;
-    /* border: 1px solid red; */
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  /* border: 1px solid red; */
+  gap: 20px;
 }
-.selfCommentPost{
-    background-color: white;
-    padding: 10px 20px;
-    display: flex;
+.selfCommentPost {
+  background-color: white;
+  padding: 10px 20px;
+  display: flex;
 }
 .selfCommentPost input {
-    width: 65vw;
-    height: 45px;
-    margin-right: 45px;
-    box-sizing: border-box;
-    background-color: var(--background);
-    border: 0;
-    border-radius: 10px;
-    color: var(--light-brown);
-    font: var(--text-small);
-    padding-left: 15px;
-    font-size: 14px;
+  width: 65vw;
+  height: 45px;
+  margin-right: 45px;
+  box-sizing: border-box;
+  background-color: var(--background);
+  border: 0;
+  border-radius: 10px;
+  color: var(--light-brown);
+  font: var(--text-small);
+  padding-left: 15px;
+  font-size: 14px;
 }
-.selfCommentPost input::placeholder{
-    color: var(--light-brown);
+.selfCommentPost input::placeholder {
+  color: var(--light-brown);
 }
 
 .selfCommentPost button {
-    width: 140px;
-    height: 45px;
-    border-radius: 6px;
-    background-color: var(--dark-brown);
-    color: var(--background);
-    text-align: center;
-    font-family: Lexend;
-    font-size: 18px;
+  width: 140px;
+  height: 45px;
+  border-radius: 6px;
+  background-color: var(--dark-brown);
+  color: var(--background);
+  text-align: center;
+  font-family: Lexend;
+  font-size: 18px;
 }
 
 .selfCommentPost button:active {
-    background-color: #2f200a;
+  background-color: #2f200a;
+}
+.postComments {
+  display: flex;
+  flex-direction: column;
+}
+.postComment {
+  /* border: 1px solid red; */
+  background-color: white;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
 }
 
-.postComment{
-    background-color: white;
-    display: flex;
-    gap: 10px;
-    padding: 20px;
+.commenterID {
+  flex-basis: 20%;
+  font: var(--text-regular);
 }
-
-.commenterID{
-    flex-basis: 20%;
-    font: var(--text-regular);
-}
-.commentContent{
-    padding: 10px;
-    flex-basis: 80%;
-    background-color: var(--background);
-    font: var(--text-small);
-    color: var(--light-brown);
+.commentContent {
+  padding: 10px;
+  flex-basis: 80%;
+  background-color: var(--background);
+  font: var(--text-small);
+  color: var(--light-brown);
+  border-radius: 10px;
 }

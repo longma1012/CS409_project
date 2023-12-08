@@ -6,16 +6,16 @@ import Header from "../Header/Header.jsx";
 import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
 import { useParams, useLocation } from "react-router-dom";
+import { readPostData, updatePost } from "../../dbUtils/CRUDPost.js";
 import {
-  readPostData,
-  updateCommentList,
-  updatePost,
-} from "../../dbUtils/CRUDPost.js";
-import { writeCommentData } from "../../dbUtils/CRUDComment.js";
+  writeCommentData,
+  readCommentData,
+} from "../../dbUtils/CRUDComment.js";
 import { v4 as uuidv4 } from "uuid";
 
 const ViewPost = () => {
   const [currentUserEmail, setCurrentUserEmail] = useState("");
+  const [comments, setComments] = useState([]); // Add this state to hold comment data
   //   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
   const [post, setPost] = useState("");
@@ -33,15 +33,27 @@ const ViewPost = () => {
   const submitComment = () => {
     const commentId = uuidv4(); // Generate a unique ID for the comment
     const createTime = new Date().toISOString();
+    const newComment = {
+      Content: comment,
+      CreateTime: createTime,
+      CommentUserEmail: currentUserEmail,
+      id: commentId, // Assuming the comment object has an 'id' field
+    };
 
+    // Write the new comment data to the database
     writeCommentData(commentId, postId, comment, createTime, currentUserEmail);
 
+    // Update the post's CommentList with the new comment ID
     const updatedCommentList = post.CommentList
       ? [...post.CommentList, commentId]
       : [commentId];
-    console.log("Commend id is " + commentId);
     updatePost(postId, { CommentList: updatedCommentList });
-    setComment(""); // Clear the comment input after submitting
+
+    // Add the new comment to the comments state to update the UI immediately
+    setComments([...comments, newComment]);
+
+    // Clear the comment input after submitting
+    setComment("");
   };
 
   useEffect(() => {
@@ -65,6 +77,29 @@ const ViewPost = () => {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    // Fetch post data when postId changes
+    if (postId) {
+      readPostData(postId, (postData) => {
+        setPost(postData);
+        if (postData.CommentList) {
+          // For each comment ID in the CommentList, fetch the comment data
+          const commentPromises = postData.CommentList.map(
+            (commentId) =>
+              new Promise((resolve) => {
+                readCommentData(commentId, (commentData) => {
+                  resolve({ id: commentId, ...commentData });
+                });
+              })
+          );
+          Promise.all(commentPromises).then((commentsData) => {
+            setComments(commentsData); // Update the comments state with all fetched comments
+          });
+        }
+      });
+    }
+  }, [postId]);
 
   return (
     <>
@@ -99,33 +134,16 @@ const ViewPost = () => {
           <button onClick={submitComment}>Comment</button>
         </div>
         <div className={styles.postComments}>
-          <div className={styles.postComment}>
-            <div className={styles.commenterID}> NAME123456</div>
-            <div className={styles.commentContent}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              turpis ligula, posuere sed tempor a, sodales eget magna. Praesent
-              elementum lacinia magna sed consequat. Maecenas nibh erat, sodales
-              id ante eu, suscipit rutrum lorem.
+          {comments.map((singlecomment) => (
+            <div key={singlecomment.id} className={styles.postComment}>
+              <div className={styles.commenterID}>
+                {singlecomment.CommentUserEmail}
+              </div>
+              <div className={styles.commentContent}>
+                {singlecomment.Content}
+              </div>
             </div>
-          </div>
-          <div className={styles.postComment}>
-            <div className={styles.commenterID}> ab2 </div>
-            <div className={styles.commentContent}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              turpis ligula, posuere sed tempor a, sodales eget magna. Praesent
-              elementum lacinia magna sed consequat. Maecenas nibh erat, sodales
-              id ante eu, suscipit rutrum lorem.
-            </div>
-          </div>
-          <div className={styles.postComment}>
-            <div className={styles.commenterID}> NAME123456</div>
-            <div className={styles.commentContent}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              turpis ligula, posuere sed tempor a, sodales eget magna. Praesent
-              elementum lacinia magna sed consequat. Maecenas nibh erat, sodales
-              id ante eu, suscipit rutrum lorem.
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
