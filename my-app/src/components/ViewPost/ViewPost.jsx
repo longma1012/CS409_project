@@ -5,17 +5,32 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Header from "../Header/Header.jsx";
 import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
-import { useParams, useLocation   } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { readPostData } from "../../dbUtils/CRUDPost.js";
+import { writeCommentData } from "../../dbUtils/CRUDComment.js";
+import { v4 as uuidv4 } from "uuid";
 
 const ViewPost = () => {
   const [currentUserEmail, setCurrentUserEmail] = useState("");
+  const [comment, setComment] = useState("");
   const [post, setPost] = useState("");
   const { postId } = useParams();
 
   const location = useLocation();
   const handleGoBack = () => {
-    window.history.back(); 
+    window.history.back();
+  };
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const submitComment = () => {
+    const commentId = uuidv4(); // Generate a unique ID for the comment
+    const createTime = new Date().toISOString();
+
+    writeCommentData(commentId, postId, comment, createTime, currentUserEmail);
+    setComment(""); // Clear the comment input after submitting
+    console.log("test submit comment  " + commentId);
   };
 
   useEffect(() => {
@@ -45,7 +60,9 @@ const ViewPost = () => {
       <Header />
       <div className={styles.viewPostContainer}>
         <div className={styles.backBtnContainer}>
-          <button className={styles.backBtn} onClick={handleGoBack} >Back</button>
+          <button className={styles.backBtn} onClick={handleGoBack}>
+            Back
+          </button>
         </div>
         <div className={styles.postDetails}>
           <div className={styles.postTitle}> {post.Title} </div>
@@ -62,8 +79,13 @@ const ViewPost = () => {
           </div>
         </div>
         <div className={styles.selfCommentPost}>
-          <input type="text" placeholder="Leave your content here..." />
-          <button>Comment</button>
+          <input
+            type="text"
+            placeholder="Leave your content here..."
+            value={comment}
+            onChange={handleCommentChange}
+          />
+          <button onClick={submitComment}>Comment</button>
         </div>
         <div className={styles.postComments}>
           <div className={styles.postComment}>
