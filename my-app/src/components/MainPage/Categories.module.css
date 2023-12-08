@@ -18,23 +18,25 @@ body {
     /* justify-content: stretch; */
     /* border: 1px solid red; */
 }
-.all {
-    width: 85px;
-    height: 40px;
-    background-color: var(--light-brown);
-    /* text-align: center;*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px
-}
 
 .category {
     flex-grow: 1;
     height: 40px;
     background-color: var(--light-brown);
-    font: var(--text-regulat);
+    font: var(--text-regular);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.selectedCategory{
+    flex-grow: 1;
+    height: 40px;
+    background-color: var(--dark-brown);
+    font: var(--text-regular);
+    color: var(--light-brown);
     display: flex;
     justify-content: center;
     align-items: center;
