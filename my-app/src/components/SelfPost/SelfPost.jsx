@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Header from "../Header/Header.jsx";
 import styles from "./SelfPost.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { writePostData } from "../../dbUtils/CRUDPost.js"; // 替换为你的Firebase函数文件的实际路径
+import { writePostData } from "../../dbUtils/CRUDPost.js";
+
+import { auth } from "../../config/firebase";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { v4 as uuidv4 } from "uuid";
 
 const SelfPost = () => {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [body, setBody] = useState("");
+    const [useremail, setUsereEmail] = useState("");
+
     const navigate = useNavigate();
 
-    // 生成唯一的 postId
-    const generatePostId = () => {
-        const currentId = Number(localStorage.getItem("postIdCounter") || 0);
-        localStorage.setItem("postIdCounter", currentId + 1);
-        return `post_${currentId + 1}`;
-    };
-
     const handleSubmit = () => {
-        const postId = generatePostId();
-        const useremail = "user@example.com"; // 替换为实际的用户邮箱
+        const postId = uuidv4();
+        const email = useremail; 
         const likes = 0;
         const postTime = new Date().toISOString();
 
-        writePostData(postId, title, useremail, category, body, likes, postTime);
+        writePostData(
+            postId,
+            title,
+            email,
+            category,
+            body,
+            likes,
+            postTime
+        );
         navigate("/main");
     };
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUsereEmail(user.email);
+            } else {
+                setUsereEmail("");
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
     return (
         <div>
@@ -69,7 +88,10 @@ const SelfPost = () => {
                     </div>
                 </div>
                 <div className={styles.selfPostCreate}>
-                    <div className={styles.selfPostCreateBtn} onClick={handleSubmit}>
+                    <div
+                        className={styles.selfPostCreateBtn}
+                        onClick={handleSubmit}
+                    >
                         Create Post
                     </div>
                 </div>
