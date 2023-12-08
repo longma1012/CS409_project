@@ -12,7 +12,7 @@ const SelfPost = () => {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [body, setBody] = useState("");
-    const [useremail, setUsereEmail] = useState("");
+    const [userId, setUserId] = useState("");
     const [postError, setPostError] = useState("");
 
     // get input title from main
@@ -37,7 +37,7 @@ const SelfPost = () => {
         e.preventDefault();
         try {
             const postId = uuidv4();
-            const email = useremail;
+            const userid = userId;
             const likes = 0;
             const postTime = new Date().toISOString();
 
@@ -47,7 +47,7 @@ const SelfPost = () => {
                 writePostData(
                     postId,
                     title,
-                    email,
+                    userid,
                     category,
                     body,
                     likes,
@@ -62,12 +62,14 @@ const SelfPost = () => {
     };
 
     useEffect(() => {
+        let userId = "";
         const auth = getAuth();
         const unsubscribe = onAuthStateChanged(auth, (user) => {
+            // console.log(user);
             if (user) {
-                setUsereEmail(user.email);
+                setUserId(user.uid);
             } else {
-                setUsereEmail("");
+                setUserId("");
             }
         });
         return () => unsubscribe();

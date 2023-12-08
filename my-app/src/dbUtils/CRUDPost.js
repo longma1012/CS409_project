@@ -12,7 +12,7 @@ import {
 export const writePostData = (
   postId,
   title,
-  useremail,
+  userId,
   category,
   body,
   likes,
@@ -21,7 +21,7 @@ export const writePostData = (
   const db = getDatabase();
   set(ref(db, `posts/${postId}`), {
     Title: title,
-    UserEmail: useremail,
+    userId: userId,
     Category: category,
     Body: body,
     Likes: likes,
