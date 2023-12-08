@@ -7,6 +7,7 @@ import styles from "./ViewPost.module.css";
 import LikeIcon from "../../images/Like.png";
 import { useParams, useLocation } from "react-router-dom";
 import { readPostData, updatePost } from "../../dbUtils/CRUDPost.js";
+import { readUsename } from "../../dbUtils/CRUDUser";
 import {
   writeCommentData,
   readCommentData,
@@ -14,9 +15,10 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 const ViewPost = () => {
-  const [currentUserEmail, setCurrentUserEmail] = useState("");
+  const [postUsername, setPostUsername] = useState("");
+  const [myUsername, setMyUsername] = useState("");
   const [comments, setComments] = useState([]); // Add this state to hold comment data
-  //   const [commentList, setCommentList] = useState([]);
+  const [myUserId, setMyUserId] = useState("");
   const [comment, setComment] = useState("");
   const [post, setPost] = useState("");
   const { postId } = useParams();
@@ -36,12 +38,12 @@ const ViewPost = () => {
     const newComment = {
       Content: comment,
       CreateTime: createTime,
-      CommentUserEmail: currentUserEmail,
+      CommentUserName: myUsername,
       id: commentId, // Assuming the comment object has an 'id' field
     };
 
     // Write the new comment data to the database
-    writeCommentData(commentId, postId, comment, createTime, currentUserEmail);
+    writeCommentData(commentId, postId, comment, createTime, myUsername);
 
     // Update the post's CommentList with the new comment ID
     const updatedCommentList = post.CommentList
@@ -56,6 +58,34 @@ const ViewPost = () => {
     setComment("");
   };
 
+  // get post user name
+  useEffect(() => {
+    const fetchPostUsername = async () => {
+      try {
+        console.log(post.userId);
+        const fetchedUsername = await readUsename(post.userId);
+        setPostUsername(fetchedUsername || "Unknown User");
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    };
+    fetchPostUsername();
+  }, [post.userId]);
+
+  // get my user name
+  useEffect(() => {
+    const fetchMyUsername = async () => {
+      try {
+        const fetchedMyUsername = await readUsename(myUserId);
+        // console.log("myuserid  " + fetchedMyUsername);
+        setMyUsername(fetchedMyUsername || "Unknown User");
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    };
+    fetchMyUsername();
+  }, [myUserId]);
+
   useEffect(() => {
     // Fetch post data when postId changes
     if (postId) {
@@ -64,19 +94,6 @@ const ViewPost = () => {
       });
     }
   }, [postId]); // This effect runs when postId changes
-  //   console.log("check post item: " + post.Title);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUserEmail(user.email);
-      } else {
-        setCurrentUserEmail("");
-      }
-    });
-    return () => unsubscribe();
-  }, []);
 
   useEffect(() => {
     // Fetch post data when postId changes
@@ -101,6 +118,20 @@ const ViewPost = () => {
     }
   }, [postId]);
 
+  useEffect(() => {
+    // let userId = "";
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      // console.log(user);
+      if (user) {
+        setMyUserId(user.uid);
+      } else {
+        setMyUserId("");
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <Header />
@@ -112,7 +143,7 @@ const ViewPost = () => {
         </div>
         <div className={styles.postDetails}>
           <div className={styles.postTitle}> {post.Title} </div>
-          <div className={styles.name}> {post.UserEmail} </div>
+          <div className={styles.name}> {postUsername} </div>
           <div className={styles.postContent}>{post.Body}</div>
           <div className={styles.categoryAndLikes}>
             <div className={styles.category}>{post.Category}</div>
@@ -137,7 +168,7 @@ const ViewPost = () => {
           {comments.map((singlecomment) => (
             <div key={singlecomment.id} className={styles.postComment}>
               <div className={styles.commenterID}>
-                {singlecomment.CommentUserEmail}
+                {singlecomment.CommentUserName}
               </div>
               <div className={styles.commentContent}>
                 {singlecomment.Content}
