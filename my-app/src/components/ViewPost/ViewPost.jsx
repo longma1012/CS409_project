@@ -202,11 +202,13 @@ const ViewPost = () => {
         <div className={styles.postComments}>
           {comments.map((singlecomment) => (
             <div key={singlecomment.id} className={styles.postComment}>
-              <div className={styles.commenterID}>
-                {singlecomment.CommentUserName}
-              </div>
-              <div className={styles.commentTime}>
-                {getTimeDifference(singlecomment.CreateTime)}
+              <div className={styles.commenter}>
+                <div className={styles.commenterID}>
+                  {singlecomment.CommentUserName}
+                </div>
+                <div className={styles.commentTime}>
+                  {getTimeDifference(singlecomment.CreateTime)}
+                </div>
               </div>
               <div className={styles.commentContent}>
                 {singlecomment.Content}

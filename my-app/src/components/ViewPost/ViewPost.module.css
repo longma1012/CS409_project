@@ -28,18 +28,22 @@ body {
 .postDetails {
   background-color: white;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .postTitle {
   font: var(--text-title);
 }
 
-.name {
+/* .name {
   margin: 10px 0;
-}
+} */
 
 .postTime {
   font: var(--text-small);
+  font-size: 13px;
   color: var(--inner-text-grey);
   margin: 0;
 }
@@ -119,20 +123,27 @@ body {
   padding: 20px;
 }
 
+.commenter{
+  flex-basis:17%;
+  display: flex;
+  flex-direction: column;
+}
 .commenterID {
-  flex-basis: 20%;
+  /* flex-basis: 20%; */
   font: var(--text-regular);
 }
 
 .commentTime {
+  /* width: fit-content; */
   font: var(--text-small);
+  font-size: 13px;
   color: var(--inner-text-grey);
   margin: 0;
 }
 
 .commentContent {
   padding: 10px;
-  flex-basis: 80%;
+  flex-basis: 83%;
   background-color: var(--background);
   font: var(--text-small);
   color: var(--dark-brown);
